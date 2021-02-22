@@ -17,6 +17,8 @@ Use the three backticks method:
 ## Wireframes
 
 Upload images of your wireframes to an image hosting site or add them to an assets folder in your repo and link them here with a description of each specific wireframe.
+Use wireframe.cc link
+[Your Wireframe] (wireframe.cc link)
 
 ### MVP/PostMVP
 
