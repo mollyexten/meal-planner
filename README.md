@@ -1,6 +1,6 @@
 # Project Overview
 
-## Project Name
+## Phrasal Verb Finder
 
 [Your deployed site] ("url in strings")
 
