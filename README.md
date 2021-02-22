@@ -2,7 +2,7 @@
 
 ## Project Name
 
-The name of your project with deployed URL.
+[Your deployed site] ("url in strings")
 
 ## Project Description
 
@@ -11,6 +11,8 @@ Use this section to describe your final project and perhaps any links to relevan
 ## API and Data Sample
 
 Specify the API you are using and include a link. Show us a snippet of JSON returned by your API so we know you can access it and get the info you need
+Use the three backticks method:
+```json + link```
 
 ## Wireframes
 
