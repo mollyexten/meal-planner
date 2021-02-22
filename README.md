@@ -6,7 +6,7 @@
 
 ## Project Description
 
-Phrasal Verb Finder enables English language learners to look up a phrasal verb and save phrasal verbs to review later.
+Phrasal Verb Finder enables English language learners to look up a phrasal verb to find its definition and usage.
 
 ## API and Data Sample
 
@@ -25,8 +25,8 @@ Here is a link of the [dictionaryapi for the run] ("https://www.dictionaryapi.co
                                         "sphrasev": {
                                             "phrs": [
                                                 {
-                                                    "pva": "run across (someone or something)"```
-
+                                                    "pva": "run across (someone or something)"
+```
 ## Wireframes
 
 Upload images of your wireframes to an image hosting site or add them to an assets folder in your repo and link them here with a description of each specific wireframe.
