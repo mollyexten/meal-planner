@@ -6,13 +6,26 @@
 
 ## Project Description
 
-Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and\or functionality.
+Phrasal Verb Finder enables English language learners to look up a phrasal verb and save phrasal verbs to review later.
 
 ## API and Data Sample
 
-Specify the API you are using and include a link. Show us a snippet of JSON returned by your API so we know you can access it and get the info you need
-Use the three backticks method:
-```json + link```
+Here is a link of the [dictionaryapi for the run] ("https://www.dictionaryapi.com/api/v3/references/learners/json/run?key=90dc8353-ef36-45bf-bf5e-c6d89a598b99")
+```        "dros": [
+            {
+                "drp": "run across",
+                "gram": "phrasal verb",
+                "def": [
+                    {
+                        "sseq": [
+                            [
+                                [
+                                    "sense",
+                                    {
+                                        "sphrasev": {
+                                            "phrs": [
+                                                {
+                                                    "pva": "run across (someone or something)"```
 
 ## Wireframes
 
