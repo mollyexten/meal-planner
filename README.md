@@ -119,7 +119,7 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | Create click event for search bar info | H | 1 hr | 15 min |  |
 | Render recipe results to page via DOM | H | 2 hrs | 15 min |  |
 | Create remove results function | H | 1 hrs | 15 min |  |
-| Append specific recipe info to page via DOM | H | 2 hrs |  |  |
+| Append specific recipe info to page via DOM | H | 2 hrs | 1 hr |  |
 | Click event to redirect to specific recipe | H | 2 hrs |  |  |
 | Format photos appended to DOM | H | 1 hrs |  |  |
 | Flexbox for index page | H | 2 hrs |  |  |
