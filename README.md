@@ -89,7 +89,7 @@ Both wireframes are also included as PDFs in this GitHub repo.
 
 #### PostMVP  
 
-- Add a save recipe button to collect recipes in a recipe box
+- Add a save recipe button to collect recipes in a recipe box via window.localStorage (.setItem)
 - Aggregate ingredients from saved recipes into a master grocery list
 - Include quantities of ingredients needed on master grocery list
 
