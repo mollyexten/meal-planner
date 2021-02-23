@@ -4,19 +4,17 @@
 
 async function fetchData(ingredient) {
 
+  // Store the URL that accesses the API in a variable
+  const ingredientURL = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`
   
-
-  // For now the ingredient will be hardcoded in when I invoke this funciton, but eventually it will be captured via an event listener
-  const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`
-  
-  // Make the try/catch function
+  // Make the try/catch part
   try {
     
     // Invoke the removeResults() function to clear any existing search results
     removeResults()
     
     // Access the API
-    let response = await axios.get(url)
+    let response = await axios.get(ingredientURL)
     
     // Store the meal data array in a variable
     let recipes = response.data.meals
@@ -26,14 +24,17 @@ async function fetchData(ingredient) {
       let image = document.createElement("img")
       image.src = recipe.strMealThumb
       image.width = "200"
-      let dish = document.createElement("p")
+      let dish = document.createElement("a")
       dish.textContent = recipe.strMeal
+      dish.href = "./recipe.html"
 
       // Later I will need the recipe id when I create links to the full recipes
       console.log(`recipe id for link (later) ${recipe.idMeal}`)
+      const recipeURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}`
+      console.log(recipeURL)
       
       // Append image and dish to the DOM
-      const appendBottom = document.querySelector(".bottom")
+      const appendBottom = document.querySelector(".search-bottom")
       appendBottom.append(image)
       appendBottom.append(dish)
     })
@@ -66,10 +67,14 @@ form.addEventListener("submit", (e) => {
 function removeResults() {
   
   // Store the div with class "bottom" in a variable (This is where search results are displayed)
-  const bottom = document.querySelector(".bottom")
+  const bottom = document.querySelector(".search-bottom")
 
   // Loop through the child elements of the div, removing each one until there are none left
   while (bottom.lastChild) {
     bottom.removeChild(bottom.lastChild)
   }
+}
+
+async function renderRecipe(id) {
+  const recipeURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
 }
