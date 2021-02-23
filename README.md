@@ -72,7 +72,7 @@ Here is a link for [Honey Teriyaki Salmon](https://www.themealdb.com/api/json/v1
 ## Wireframes
 
 [Meal Planner Search](https://wireframe.cc/pro/pp/64297a170417181)<br />
-[Meal Planner Recipe](https://wireframe.cc/pro/pp/e0d6f63c3417182)
+[Meal Planner Recipe](https://wireframe.cc/pro/pp/e0d6f63c3417182)<br />
 Both wireframes are also included as PDFs in this GitHub repo.
 
 ### MVP/PostMVP
@@ -107,7 +107,7 @@ Both wireframes are also included as PDFs in this GitHub repo.
 
 ## Priority Matrix
 
-[View here](https://lucid.app/lucidchart/invitations/accept/63606aaf-2d9b-44a4-9998-4dac62063c38)
+[View here](https://lucid.app/lucidchart/invitations/accept/63606aaf-2d9b-44a4-9998-4dac62063c38)<br />
 The priority matrix can also be viewed as a PDF in this GitHub repo.
 
 ## Timeframes
