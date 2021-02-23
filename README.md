@@ -98,7 +98,7 @@ Both wireframes are also included as PDFs in this GitHub repo.
 |  Day | Deliverable | Status
 |---|---| ---|
 |Feb 22-23| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
-|Feb 23| Project Approval | Incomplete
+|Feb 23| Project Approval | Complete
 |Feb 23-4| Core Application Structure HTML / app.js | Incomplete
 |Feb 24| Initial Clickable Model  | Incomplete
 |Feb 25| MVP | Incomplete
