@@ -6,11 +6,11 @@
 
 ## Project Description
 
-The meal planner application enables a user to look up recipes based on the ingredients they have using the TheMealDB API. The search results will include links to the full recipes, with ingredient list and directions.
+The meal planner application enables a user to look up recipes based on the ingredients they have using the TheMealDB API. The search results will include links to the full recipes, with an ingredient list and directions.
 
 ## API and Data Sample
 
-Here is a link for Honey Teriyaki Salmon ("https://www.themealdb.com/api/json/v1/1/search.php?s=honey%20teriyaki%20salmon")
+Here is a link for [Honey Teriyaki Salmon](https://www.themealdb.com/api/json/v1/1/search.php?s=honey%20teriyaki%20salmon)
 ```{
     "meals": [
         {
@@ -71,15 +71,16 @@ Here is a link for Honey Teriyaki Salmon ("https://www.themealdb.com/api/json/v1
 ```
 ## Wireframes
 
-Meal Planner Search ("https://wireframe.cc/pro/pp/64297a170417181")
-Meal Planner Recipe ("https://wireframe.cc/pro/pp/e0d6f63c3417182")
+[Meal Planner Search](https://wireframe.cc/pro/pp/64297a170417181)
+[Meal Planner Recipe](https://wireframe.cc/pro/pp/e0d6f63c3417182)
 Both wireframes are also included as PDFs in this GitHub repo.
 
 ### MVP/PostMVP
 
 #### MVP 
 
-- Use Axios to make a request to TheMealDB API and insert information on ingredients, dishes, photos, and directions to the DOM
+- Use Axios to make a request to TheMealDB API
+- Insert information on ingredients, dishes, photos, and directions to the DOM
 - Render search results for a specific ingredient on page
 - Make functioning links for dishes that pull up a recipe 
 - Style using Flexbox
@@ -106,7 +107,7 @@ Both wireframes are also included as PDFs in this GitHub repo.
 
 ## Priority Matrix
 
-View here ("https://lucid.app/lucidchart/invitations/accept/63606aaf-2d9b-44a4-9998-4dac62063c38")
+[View here](https://lucid.app/lucidchart/invitations/accept/63606aaf-2d9b-44a4-9998-4dac62063c38)
 The priority matrix can also be viewed as a PDF in this GitHub repo.
 
 ## Timeframes
@@ -115,12 +116,12 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | --- | :---: |  :---: | :---: | :---: |
 | Creating Basic HTML Template | H | 1 hrs|  |  |
 | Understanding API | H | 2 hrs |  |  |
-| Create click event for search bar info | H | 1.5 hr |  |  |
+| Create click event for search bar info | H | 1 hr |  |  |
 | Render recipe results to page via DOM | H | 2 hrs |  |  |
 | Create remove results function | H | 1 hrs |  |  |
 | Append specific recipe info to page via DOM | H | 2 hrs |  |  |
 | Click event to redirect to specific recipe | H | 2 hrs |  |  |
-| Format photos appended to DOM | H | 1.5 hrs |  |  |
+| Format photos appended to DOM | H | 1 hrs |  |  |
 | Flexbox for index page | H | 2 hrs |  |  |
 | Flexbox for search results | H | 3 hrs |  |  |
 | Flexbox for individual recipes | H | 2 hrs |  |  |
@@ -133,6 +134,7 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | Display saved recipes in recipe-box page | H | 2 hrs |  |  |
 | Compile saved recipes' ingredients to grocery list | H | 3 hrs |  |  |
 | Add amounts to grocery list | H | 3 hrs |  |  |
+| Organize final CSS | H | 1 hr |  |  |
 | Total | H | 40 hrs|  |  |
 
 ## Code Snippet
