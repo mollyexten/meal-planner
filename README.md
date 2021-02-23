@@ -99,10 +99,10 @@ Both wireframes are also included as PDFs in this GitHub repo.
 |---|---| ---|
 |Feb 22-23| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
 |Feb 23| Project Approval | Incomplete
-|Feb 24| Core Application Structure (HTML, CSS, etc.) | Incomplete
-|Feb 24| Pseudocode / actual code | Incomplete
-|Feb 25| Initial Clickable Model  | Incomplete
-|Feb 26| MVP | Incomplete
+|Feb 23-4| Core Application Structure HTML / app.js | Incomplete
+|Feb 24| Initial Clickable Model  | Incomplete
+|Feb 25| MVP | Incomplete
+|Feb 26| Styling | Incomplete
 |March 1| Presentations | Incomplete
 
 ## Priority Matrix
