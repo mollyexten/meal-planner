@@ -1,9 +1,0 @@
-I have created the search and recipe pages separately. I'm not sure how to link them together:
-
-Assuming it was correct to create separate html and javascript files for the two pages:
-Should I leave the recipes as links and use template literals somehow to insert the recipe id value into the redirect link?
-Or should I make those recipes event handlers (not links) and somehow insert the recipe id value?
-If event handler is appropriate in this case, would I use window.location?
-Regardless, how could I extract the recipe id value from app.js as an argument to pass into the renderRecipe function in recipeApp.js?
-
-Perhaps I should be maintaining one .js for the whole app?

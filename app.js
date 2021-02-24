@@ -2,7 +2,7 @@
 // API doc for searching by recipe id https://www.themealdb.com/api/json/v1/1/lookup.php?i=52997
 
 // Set up variable for appending elements to bottom part of screen
-const appendBottom = document.querySelector(".search-bottom")
+const bottom = document.querySelector(".bottom")
 
 // Create a fetchData() function to capture search results based on ingredient
 async function fetchData(ingredient) {
@@ -13,8 +13,8 @@ async function fetchData(ingredient) {
   // Make the try/catch part
   try {
     
-    // Invoke the removeResults() function to clear any existing search results
-    removeResults()
+    // Invoke the removeBottom() function to clear any existing search results and recipe
+    removeBottom()
     
     // Access the API
     let response = await axios.get(ingredientURL)
@@ -26,7 +26,8 @@ async function fetchData(ingredient) {
     if (recipes === null) {
       let noRecipes = document.createElement("p")
       noRecipes.textContent = "No recipes found"
-      appendBottom.append(noRecipes)
+      bottom.append(noRecipes)
+      return
     }
     
     // Loop through each meal data item, storing image and dish name in variables
@@ -38,17 +39,17 @@ async function fetchData(ingredient) {
       dish.textContent = recipe.strMeal
       let id = recipe.idMeal
       dish.addEventListener("click", function() {
-        renderRecipe(id)
+        renderRecipe(id, ingredient)
       })
       
-      // Append image and dish to the DOM
-      appendBottom.append(image)
-      appendBottom.append(dish)
-      
-      // Later I will need the recipe id when I create links to the full recipes
-      console.log(`recipe id for link (later) ${recipe.idMeal}`)
-      const recipeURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}`
-      console.log(recipeURL)
+      // Create a container for image and dish, append to DOM
+      const mealDiv = document.createElement("div")
+      bottom.append(mealDiv)
+      mealDiv.append(image)
+      mealDiv.append(dish)
+      // bottom.append(image)
+      // bottom.append(dish)
+
     })
     
     // Obligatory "return response" part
@@ -75,11 +76,8 @@ form.addEventListener("submit", (e) => {
   document.querySelector("#search-value").value = ""
 })
 
-// removeResults function to take out previous search results
-function removeResults() {
-  
-  // Store the div with class "bottom" in a variable (This is where search results are displayed)
-  const bottom = document.querySelector(".search-bottom")
+// removeBottom function to take out existing search results or recipe
+function removeBottom() {
 
   // Loop through the child elements of the div, removing each one until there are none left
   while (bottom.lastChild) {
@@ -89,10 +87,12 @@ function removeResults() {
 
 // Create a renderRecipe() function to display the photo, ingredients, and directions
 
-async function renderRecipe(id) {
+async function renderRecipe(id, ingredient) {
+
+
   
-  // Remove results
-  removeResults()
+  // Remove search results
+  removeBottom()
   
   // Store the URL that accesses the API in a variable
   const recipeURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
@@ -100,11 +100,8 @@ async function renderRecipe(id) {
   // Make the try/catch part
   try {
 
-    // I don't think I need to remove any results, so I won't do a removeResults-type function here
-
     // Access the API
     let response = await axios.get(recipeURL)
-    console.log(response)
     let recipe = response.data.meals[0]
 
     // Store recipe name in variable "name"
@@ -121,16 +118,26 @@ async function renderRecipe(id) {
     instructions.textContent = recipe.strInstructions
     
     // Append name and image to the bottom half of the page
-    appendBottom.append(name)
-    appendBottom.append(image)
+    bottom.append(name)
+    bottom.append(image)
     
     // Invoke showIngredients function to access ingredients with their amounts and append to page after the image
     showIngredients(recipe)
     
     // Append instructions to the bottom half of the page
-    appendBottom.append(instructions)
+    bottom.append(instructions)
+    
+    // Create back button and append to top of recipe
+    const back = document.createElement("button")
+    back.textContent = "Back to results"
+    bottom.prepend(back)
 
-    // Obligatory return resposne
+    // Add event listener to back button
+    back.addEventListener("click", function() {
+      fetchData(ingredient)
+    })
+
+    // Obligatory return response
     return response
   } catch (err) {
     console.error(err)
@@ -144,7 +151,7 @@ function showIngredients(obj) {
   
   // Append the ingredients table to the top half of the recipe (after the image)
   ingredientTable = document.createElement("table")
-  appendBottom.append(ingredientTable)
+  bottom.append(ingredientTable)
 
   // Give the table the title "Ingredients"
   const header = ingredientTable.createTHead();

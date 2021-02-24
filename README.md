@@ -114,13 +114,13 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Creating Basic HTML Template | H | 1 hr | 30 min |  |
+| Creating Basic HTML Template | H | 1 hr | 1 hr |  |
 | Understanding API | H | 2 hrs | 1 hr 45 min |  |
 | Create click event for search bar info | H | 1 hr | 15 min |  |
 | Render recipe results to page via DOM | H | 2 hrs | 15 min |  |
 | Create remove results function | H | 1 hrs | 15 min |  |
 | Append specific recipe info to page via DOM | H | 2 hrs | 3 hrs |  |
-| Click event to redirect to specific recipe | H | 2 hrs |  |  |
+| Click event load specific recipe | H | 2 hrs | 2 hrs |  |
 | Format photos appended to DOM | H | 1 hrs |  |  |
 | Flexbox for index page | H | 2 hrs |  |  |
 | Flexbox for search results | H | 3 hrs |  |  |
