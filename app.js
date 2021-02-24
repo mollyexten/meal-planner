@@ -46,11 +46,11 @@ async function fetchData(ingredient) {
       
       // Create a container for image and dish, append to DOM
       const mealDiv = document.createElement("div")
+      mealDiv.className = "meal-div"
       bottom.append(mealDiv)
       mealDiv.append(image)
       mealDiv.append(dish)
-      // bottom.append(image)
-      // bottom.append(dish)
+
 
     })
     

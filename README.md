@@ -128,7 +128,7 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | CSS color styling | H | 1 hr | 1 hr |  |
 | Add icons to CSS | H | 1.5 hrs |  |  |
 | Media query for desktop - index | H | 2 hrs |  |  |
-| Media query for desktop - search | H | 2 hrs |  |  |
+| Media query for desktop - search | H | 2 hrs | 2 hrs |  |
 | Media query for desktop - recipe | H | 2 hrs |  |  |
 | Create a "save recipes" function | H | 3hrs|  |  |
 | Display saved recipes in recipe-box page | H | 2 hrs |  |  |
