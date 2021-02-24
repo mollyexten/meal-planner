@@ -40,24 +40,7 @@ async function renderRecipe(id) {
     appendBottom.append(instructions)
     
     showIngredients(recipe)
-    // ingredients.filter(ingredient => {
-    //   return ingredient.
-    //   console.log(ingredient.includes("strIngredient"))
-    // })
-    // let ingredientsArray = Object.keys(ingredients)
-    // console.log("ingredient keys", ingredientsArray)
-    // ingredientsArray.forEach((ingredient) => {
-    //   if (ingredient.includes("strIngredient")) {
-    //     console.log("ingredient keys with strIngredient", ingredient)
-    //   }
-    // })
-    // console.log(Object.keys(ingredients))
-    // ingredients.forEach((ingredient) => {
-    //   console.log(Object.keys(ingredient))
-    //   if (Object.keys(ingredient).includes("strIngredient")) {
-    //     console.log(Object.keys(ingredient))
-    //   }
-    // })
+
     return response
   } catch (err) {
     console.error(err)
@@ -78,19 +61,29 @@ function showIngredients(obj) {
   const appendTop = document.querySelector(".recipe-top")
   ingredientTable = document.createElement("table")
   appendTop.append(ingredientTable)
+  const header = ingredientTable.createTHead();
+  let row = header.insertRow(0);
+  let cell = row.insertCell(0);
+  cell.textContent = "Ingredients"
+  let measurements = []
+  let ingredients = []
+  // I used this resource to understand for...in loops: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
   for (let key in obj) {
-    if (key.includes("strMeasure") && obj[key]!= "") {
-      // console.log(obj[key])
-      console.log(obj[key])
+    // This reference showed me how to check if a string contains a substring: https://flaviocopes.com/how-to-string-contains-substring-javascript/
+    if (key.includes("strMeasure") && obj[key] != " ") {
+      measurements.push(obj[key])
     }
+  }
+  for (let key in obj) {
     if (key.includes("strIngredient") && obj[key] != "") {
-      console.log(obj[key])
-      // let ingredient = obj[key]
-      // console.log(ingredient)
-      // let ingredient = document.createElement("p")
-      // ingredient.textContent = obj[key]
-      // ingredientDiv.append(ingredient)
+      ingredients.push(obj[key])
     }
-    // console.log(`${amount} ${ingredient}`)
+  }
+  for (let i = 0; i < measurements.length; i++) {
+    let row = ingredientTable.insertRow(i+1)
+    let cell1 = row.insertCell(0)
+    let cell2 = row.insertCell(1)
+    cell1.textContent = measurements[i]
+    cell2.textContent = ingredients[i]
   }
 }

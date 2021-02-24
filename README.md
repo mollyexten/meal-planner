@@ -115,7 +115,7 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Creating Basic HTML Template | H | 1 hr | 30 min |  |
-| Understanding API | H | 2 hrs | 15 min |  |
+| Understanding API | H | 2 hrs | 1 hr 45 min |  |
 | Create click event for search bar info | H | 1 hr | 15 min |  |
 | Render recipe results to page via DOM | H | 2 hrs | 15 min |  |
 | Create remove results function | H | 1 hrs | 15 min |  |
