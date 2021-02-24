@@ -34,7 +34,7 @@ async function fetchData(ingredient) {
     recipes.forEach((recipe) => {
       let image = document.createElement("img")
       image.src = recipe.strMealThumb
-      image.width = "200"
+      image.width = "250"
       image.className = "search-image"
       let dish = document.createElement("p")
       dish.textContent = recipe.strMeal
@@ -90,8 +90,6 @@ function removeBottom() {
 // Create a renderRecipe() function to display the photo, ingredients, and directions
 
 async function renderRecipe(id, ingredient) {
-
-
   
   // Remove search results
   removeBottom()
@@ -107,32 +105,46 @@ async function renderRecipe(id, ingredient) {
     let recipe = response.data.meals[0]
 
     // Store recipe name in variable "name"
-    let name = document.createElement("h1")
+    let name = document.createElement("p")
     name.textContent = recipe.strMeal
+    name.className = "recipe-headers"
 
     // Store recipe image in variable "image"
     let image = document.createElement("img")
     image.src = recipe.strMealThumb
-    image.width = "400"
+    image.width = "300"
+    image.className = "recipe-image"
 
+    // Create a header for recipe instructions
+    let instructionsHeader = document.createElement("p")
+    instructionsHeader.textContent = "Instructions"
+    instructionsHeader.className = "recipe-headers"
+    
+    
     // Store recipe instructions in variable "instructions"
     let instructions = document.createElement("p")
     instructions.textContent = recipe.strInstructions
+    instructions.className = "recipe-instructions"
     
     // Append name and image to the bottom half of the page
-    bottom.append(name)
-    bottom.append(image)
+    const recipeDiv = document.createElement("div")
+    recipeDiv.className = "recipe-div"
+    bottom.append(recipeDiv)
+    recipeDiv.append(name)
+    recipeDiv.append(image)
     
     // Invoke showIngredients function to access ingredients with their amounts and append to page after the image
     showIngredients(recipe)
     
     // Append instructions to the bottom half of the page
-    bottom.append(instructions)
+    recipeDiv.append(instructionsHeader)
+    recipeDiv.append(instructions)
     
     // Create back button and append to top of recipe
     const back = document.createElement("button")
     back.textContent = "Back to results"
-    bottom.prepend(back)
+    back.id = "back-button"
+    recipeDiv.prepend(back)
 
     // Add event listener to back button
     back.addEventListener("click", function() {
@@ -152,14 +164,21 @@ async function renderRecipe(id, ingredient) {
 function showIngredients(obj) {
   
   // Append the ingredients table to the top half of the recipe (after the image)
+  
+  recipeDiv = document.querySelector(".recipe-div")
+  ingredientHeader = document.createElement("p")
+  ingredientHeader.textContent = "Ingredients"
+  ingredientHeader.className = "recipe-headers"
+  recipeDiv.append(ingredientHeader)
   ingredientTable = document.createElement("table")
-  bottom.append(ingredientTable)
+  recipeDiv.append(ingredientTable)
 
   // Give the table the title "Ingredients"
-  const header = ingredientTable.createTHead();
-  let row = header.insertRow(0);
-  let cell = row.insertCell(0);
-  cell.textContent = "Ingredients"
+  // const header = ingredientTable.createTHead();
+  // let row = header.insertRow(0);
+  // let cell = row.insertCell(0);
+  // cell.id = "table-header"
+  // cell.textContent = "Ingredients"
   
   // Set up arrays for measurements and ingredients to push into later
   let measurements = []
@@ -180,7 +199,7 @@ function showIngredients(obj) {
 
   // Fill in the table with measurement and ingredient arrays
   for (let i = 0; i < measurements.length; i++) {
-    let row = ingredientTable.insertRow(i+1)
+    let row = ingredientTable.insertRow(i)
     let cell1 = row.insertCell(0)
     let cell2 = row.insertCell(1)
     cell1.textContent = measurements[i]

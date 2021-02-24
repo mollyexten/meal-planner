@@ -34,13 +34,21 @@ h1 {
 .prompt {
   margin-top: 0;
   margin-bottom: 0;
+  font-size: 20px;
 }
 
-button, #search-button {
+#search-value {
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+#search-button, #back-button {
   background-color: #ccc5b9;
   color: #252422;
   border-radius: 8px;
   border: 2px solid gray;
+  font-size: 20px;
 }
 
 .bottom {
@@ -56,9 +64,44 @@ button, #search-button {
 
 .search-dish {
   padding: 5px;
+  width: 250px;
+  margin-top: 0;
+  font-size: 20px;
+  text-align: center;
 }
 
 .search-image {
   padding: 5px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.recipe-div {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  margin: 5px;
+  box-sizing: border-box;
+}
+
+#back-button {
+  margin-top: 10px;
+}
+
+.recipe-headers {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.recipe-image {
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.recipe-instructions {
+  padding: 10px;
+  margin-top: 0px;
 }
 

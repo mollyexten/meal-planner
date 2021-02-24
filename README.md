@@ -122,10 +122,10 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | Append specific recipe info to page via DOM | H | 2 hrs | 3 hrs |  |
 | Click event load specific recipe | H | 2 hrs | 2 hrs |  |
 | Format photos appended to DOM | H | 1 hrs |  |  |
-| Flexbox for index page | H | 2 hrs | .5 |  |
-| Flexbox for search results | H | 3 hrs |  |  |
-| Flexbox for individual recipes | H | 2 hrs |  |  |
-| CSS color styling | H | 1 hr | 1 |  |
+| Flexbox for index page | H | 2 hrs | .5 hrs |  |
+| Flexbox for search results | H | 3 hrs | .5 hrs |  |
+| Flexbox for individual recipes | H | 2 hrs | .5 hrs |  |
+| CSS color styling | H | 1 hr | 1 hr |  |
 | Add icons to CSS | H | 1.5 hrs |  |  |
 | Media query for desktop - index | H | 2 hrs |  |  |
 | Media query for desktop - search | H | 2 hrs |  |  |
