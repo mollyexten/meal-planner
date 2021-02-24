@@ -1,7 +1,10 @@
-// API doc https://www.themealdb.com/api/json/v1/1/filter.php?i=rice
+// API doc for searching by ingredients https://www.themealdb.com/api/json/v1/1/filter.php?i=rice
+// API doc for searching by recipe id https://www.themealdb.com/api/json/v1/1/lookup.php?i=52997
+
+// Set up variable for appending elements to bottom part of screen
+const appendBottom = document.querySelector(".search-bottom")
 
 // Create a fetchData() function to capture search results based on ingredient
-
 async function fetchData(ingredient) {
 
   // Store the URL that accesses the API in a variable
@@ -18,25 +21,34 @@ async function fetchData(ingredient) {
     
     // Store the meal data array in a variable
     let recipes = response.data.meals
+
+    // Catch recipes that have a null value
+    if (recipes === null) {
+      let noRecipes = document.createElement("p")
+      noRecipes.textContent = "No recipes found"
+      appendBottom.append(noRecipes)
+    }
     
     // Loop through each meal data item, storing image and dish name in variables
     recipes.forEach((recipe) => {
       let image = document.createElement("img")
       image.src = recipe.strMealThumb
       image.width = "200"
-      let dish = document.createElement("a")
+      let dish = document.createElement("p")
       dish.textContent = recipe.strMeal
-      dish.href = "./recipe.html"
-
+      let id = recipe.idMeal
+      dish.addEventListener("click", function() {
+        renderRecipe(id)
+      })
+      
+      // Append image and dish to the DOM
+      appendBottom.append(image)
+      appendBottom.append(dish)
+      
       // Later I will need the recipe id when I create links to the full recipes
       console.log(`recipe id for link (later) ${recipe.idMeal}`)
       const recipeURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}`
       console.log(recipeURL)
-      
-      // Append image and dish to the DOM
-      const appendBottom = document.querySelector(".search-bottom")
-      appendBottom.append(image)
-      appendBottom.append(dish)
     })
     
     // Obligatory "return response" part
@@ -75,6 +87,94 @@ function removeResults() {
   }
 }
 
+// Create a renderRecipe() function to display the photo, ingredients, and directions
+
 async function renderRecipe(id) {
+  
+  // Remove results
+  removeResults()
+  
+  // Store the URL that accesses the API in a variable
   const recipeURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+  
+  // Make the try/catch part
+  try {
+
+    // I don't think I need to remove any results, so I won't do a removeResults-type function here
+
+    // Access the API
+    let response = await axios.get(recipeURL)
+    console.log(response)
+    let recipe = response.data.meals[0]
+
+    // Store recipe name in variable "name"
+    let name = document.createElement("h1")
+    name.textContent = recipe.strMeal
+
+    // Store recipe image in variable "image"
+    let image = document.createElement("img")
+    image.src = recipe.strMealThumb
+    image.width = "400"
+
+    // Store recipe instructions in variable "instructions"
+    let instructions = document.createElement("p")
+    instructions.textContent = recipe.strInstructions
+    
+    // Append name and image to the bottom half of the page
+    appendBottom.append(name)
+    appendBottom.append(image)
+    
+    // Invoke showIngredients function to access ingredients with their amounts and append to page after the image
+    showIngredients(recipe)
+    
+    // Append instructions to the bottom half of the page
+    appendBottom.append(instructions)
+
+    // Obligatory return resposne
+    return response
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+// For now I am calling the function with a specific id because I don't know how to do the redirect
+// renderRecipe("52997")
+
+function showIngredients(obj) {
+  
+  // Append the ingredients table to the top half of the recipe (after the image)
+  ingredientTable = document.createElement("table")
+  appendBottom.append(ingredientTable)
+
+  // Give the table the title "Ingredients"
+  const header = ingredientTable.createTHead();
+  let row = header.insertRow(0);
+  let cell = row.insertCell(0);
+  cell.textContent = "Ingredients"
+  
+  // Set up arrays for measurements and ingredients to push into later
+  let measurements = []
+  let ingredients = []
+  
+  // I used this resource to understand for...in loops: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
+  for (let key in obj) {
+    // This reference showed me how to check if a string contains a substring: https://flaviocopes.com/how-to-string-contains-substring-javascript/
+    if (key.includes("strMeasure") && obj[key] != " ") {
+      measurements.push(obj[key])
+    }
+  }
+  for (let key in obj) {
+    if (key.includes("strIngredient") && obj[key] != "") {
+      ingredients.push(obj[key])
+    }
+  }
+
+  // Fill in the table with measurement and ingredient arrays
+  for (let i = 0; i < measurements.length; i++) {
+    let row = ingredientTable.insertRow(i+1)
+    let cell1 = row.insertCell(0)
+    let cell2 = row.insertCell(1)
+    cell1.textContent = measurements[i]
+    cell2.textContent = ingredients[i]
+  }
 }

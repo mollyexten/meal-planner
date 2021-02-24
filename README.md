@@ -135,7 +135,8 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | Compile saved recipes' ingredients to grocery list | H | 3 hrs |  |  |
 | Add amounts to grocery list | H | 3 hrs |  |  |
 | Organize final CSS | H | 1 hr |  |  |
-| Total | H | 40 hrs|  |  |
+| Cleaning up code | H | 1.5 hrs | 15 min |  |
+| Total | H | 41.5 hrs|  |  |
 
 ## Code Snippet
 
