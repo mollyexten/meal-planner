@@ -99,8 +99,8 @@ Both wireframes are also included as PDFs in this GitHub repo.
 |---|---| ---|
 |Feb 22-23| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
 |Feb 23| Project Approval | Complete
-|Feb 23-4| Core Application Structure HTML / app.js | Incomplete
-|Feb 24| Initial Clickable Model  | Incomplete
+|Feb 23-4| Core Application Structure HTML / app.js | Complete
+|Feb 24| Initial Clickable Model | Complete
 |Feb 25| MVP | Incomplete
 |Feb 26| Styling | Incomplete
 |March 1| Presentations | Incomplete
@@ -122,10 +122,10 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | Append specific recipe info to page via DOM | H | 2 hrs | 3 hrs |  |
 | Click event load specific recipe | H | 2 hrs | 2 hrs |  |
 | Format photos appended to DOM | H | 1 hrs |  |  |
-| Flexbox for index page | H | 2 hrs |  |  |
+| Flexbox for index page | H | 2 hrs | .5 |  |
 | Flexbox for search results | H | 3 hrs |  |  |
 | Flexbox for individual recipes | H | 2 hrs |  |  |
-| CSS color styling | H | 1 hr |  |  |
+| CSS color styling | H | 1 hr | 1 |  |
 | Add icons to CSS | H | 1.5 hrs |  |  |
 | Media query for desktop - index | H | 2 hrs |  |  |
 | Media query for desktop - search | H | 2 hrs |  |  |

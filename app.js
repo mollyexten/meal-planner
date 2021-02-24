@@ -35,8 +35,10 @@ async function fetchData(ingredient) {
       let image = document.createElement("img")
       image.src = recipe.strMealThumb
       image.width = "200"
+      image.className = "search-image"
       let dish = document.createElement("p")
       dish.textContent = recipe.strMeal
+      dish.className = "search-dish"
       let id = recipe.idMeal
       dish.addEventListener("click", function() {
         renderRecipe(id, ingredient)
@@ -166,12 +168,12 @@ function showIngredients(obj) {
   // I used this resource to understand for...in loops: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
   for (let key in obj) {
     // This reference showed me how to check if a string contains a substring: https://flaviocopes.com/how-to-string-contains-substring-javascript/
-    if (key.includes("strMeasure") && obj[key] != " ") {
+    if (key.includes("strMeasure") && (obj[key] != " " || obj[key] != "")) {
       measurements.push(obj[key])
     }
   }
   for (let key in obj) {
-    if (key.includes("strIngredient") && obj[key] != "") {
+    if (key.includes("strIngredient") && (obj[key] != "" || obj[key] != " ")) {
       ingredients.push(obj[key])
     }
   }
