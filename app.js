@@ -108,6 +108,7 @@ async function renderRecipe(id, ingredient) {
     let name = document.createElement("p")
     name.textContent = recipe.strMeal
     name.className = "recipe-headers"
+    name.id = "recipe-name"
 
     // Store recipe image in variable "image"
     let image = document.createElement("img")
@@ -124,27 +125,33 @@ async function renderRecipe(id, ingredient) {
     // Store recipe instructions in variable "instructions"
     let instructions = document.createElement("p")
     instructions.textContent = recipe.strInstructions
-    instructions.className = "recipe-instructions"
+    instructions.className = "instructions"
     
-    // Append name and image to the bottom half of the page
+    // Append name to bottom half of page
+    bottom.id = "recipe-bottom"
+    bottom.append(name)
+
+    // Create a div to store image and ingredients
     const recipeDiv = document.createElement("div")
     recipeDiv.className = "recipe-div"
     bottom.append(recipeDiv)
-    recipeDiv.append(name)
     recipeDiv.append(image)
     
     // Invoke showIngredients function to access ingredients with their amounts and append to page after the image
     showIngredients(recipe)
     
     // Append instructions to the bottom half of the page
-    recipeDiv.append(instructionsHeader)
-    recipeDiv.append(instructions)
+    const instructionsDiv = document.createElement("div")
+    instructionsDiv.className = "instructions-div"
+    bottom.append(instructionsDiv)
+    instructionsDiv.append(instructionsHeader)
+    instructionsDiv.append(instructions)
     
     // Create back button and append to top of recipe
     const back = document.createElement("button")
     back.textContent = "Back to results"
     back.id = "back-button"
-    recipeDiv.prepend(back)
+    bottom.prepend(back)
 
     // Add event listener to back button
     back.addEventListener("click", function() {
@@ -166,12 +173,15 @@ function showIngredients(obj) {
   // Append the ingredients table to the top half of the recipe (after the image)
   
   recipeDiv = document.querySelector(".recipe-div")
+  ingredientsDiv = document.createElement("div")
+  ingredientsDiv.className = "ingredients-div"
+  recipeDiv.append(ingredientsDiv)
   ingredientHeader = document.createElement("p")
   ingredientHeader.textContent = "Ingredients"
   ingredientHeader.className = "recipe-headers"
-  recipeDiv.append(ingredientHeader)
+  ingredientsDiv.append(ingredientHeader)
   ingredientTable = document.createElement("table")
-  recipeDiv.append(ingredientTable)
+  ingredientsDiv.append(ingredientTable)
 
   // Give the table the title "Ingredients"
   // const header = ingredientTable.createTHead();
