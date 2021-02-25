@@ -3,6 +3,7 @@
 
 // Set up variable for appending elements to bottom part of screen
 const bottom = document.querySelector(".bottom")
+const favoriteRecipes = []
 
 // Create a showResults() function to capture search results based on ingredient
 async function showResults(ingredient) {
@@ -65,10 +66,8 @@ async function showResults(ingredient) {
       })
       
       // Create a container for image and dish, append to DOM
-      
       mealDiv.append(image)
       mealDiv.append(dish)
-
     })
     
     // Obligatory "return response" part
@@ -164,11 +163,27 @@ async function renderRecipe(id, ingredient) {
     instructionsDiv.append(instructionsHeader)
     instructionsDiv.append(instructions)
     
-    // Create back button and append to top of recipe
+    // Create a div for buttons at the top of the recipe
+    const recipeButtonDiv = document.createElement("div")
+    recipeButtonDiv.className = "recipe-button-div"
+    bottom.prepend(recipeButtonDiv)
+
+    // Append the back button to recipeButtonDiv
     const back = document.createElement("button")
     back.textContent = "Back to results"
     back.id = "back-button"
-    bottom.prepend(back)
+    recipeButtonDiv.append(back)
+
+    // Append the save button to the recipeButtonDiv
+    const save = document.createElement("button")
+    save.textContent = "Save recipe"
+    save.className = "save-button"
+    save.id = id
+    recipeButtonDiv.append(save)
+    save.addEventListener("click", (e) => {
+      e.target.id = id
+      saveRecipe(e.target.id)
+    })
 
     // Add event listener to back button
     back.addEventListener("click", function() {
@@ -221,5 +236,67 @@ function listIngredients(obj) {
     let cell2 = row.insertCell(1)
     cell1.textContent = measurements[i]
     cell2.textContent = ingredients[i]
+  }
+}
+
+// Create a function to save recipes
+function saveRecipe(id) {
+  window.localStorage.setItem(id, id)
+  favoriteRecipes.push(window.localStorage.getItem(id))
+  recipeBox(favoriteRecipes)
+}
+
+async function recipeBox(recipes) {
+  removeBottom()
+  let recipeURLs = []
+  for (let i = 0; i < recipes.length; i++) {
+    recipeURLs.push(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipes[i]}`)
+  }
+  try {
+    let recipeIDs = []
+    for (let i = 0; i < recipeURLs.length; i++) {
+      let response = await axios.get(recipeURLs[i])
+      
+      let recipe = response.data.meals[0]
+      
+      let dish = document.createElement("p")
+      dish.textContent = recipe.strMeal
+      dish.className = "search-dish"
+      dish.id = recipe.idMeal
+      
+      let image = document.createElement("img")
+      image.src = recipe.strMealThumb
+      image.width = "250"
+      image.className = "search-image"
+      image.id = recipe.idMeal
+
+      recipeIDs.push(image.id)
+      
+      const mealDiv = document.createElement("div")
+      mealDiv.className = "meal-div"
+      bottom.append(mealDiv)
+
+      mealDiv.append(image)
+      mealDiv.append(dish)
+    }
+    // Create a div for buttons at the top of the recipe
+    const recipeButtonDiv = document.createElement("div")
+    recipeButtonDiv.className = "recipe-button-div"
+    bottom.prepend(recipeButtonDiv)
+    
+    // Append the back button to recipeButtonDiv
+    const back = document.createElement("button")
+    back.textContent = "Back to recipe"
+    back.id = "back-button"
+    back.className = recipeIDs[recipeIDs.length-1]
+    recipeButtonDiv.append(back)
+    
+    // Add event listener to back button
+    back.addEventListener("click", (e) => {
+      renderRecipe(e.target.className)
+    })
+    return recipeURLs
+  } catch (err) {
+    console.error(err)
   }
 }

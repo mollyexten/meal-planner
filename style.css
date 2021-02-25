@@ -69,13 +69,20 @@ button {
   color: #252422;
 }
 
-#back-button {
+.recipe-button-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#back-button, .save-button {
   background-color: #fffcf2;
   color: #403d39;
   border: 1px solid #eb5e28;
   padding: 5px;
   font-weight: 100;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 .bottom {
@@ -121,9 +128,9 @@ button {
   box-sizing: border-box;
 }
 
-#back-button {
+/* #back-button {
   margin-top: 10px;
-}
+} */
 
 .recipe-headers {
   text-align: center;

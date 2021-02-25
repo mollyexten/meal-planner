@@ -153,4 +153,4 @@ function codey(mcCoderson) {
 ```
 
 ## Change Log
-I will use this section to document what changes were made and the reasoning behind those changes.  
+I decided not to pursue the post-MVP goal of creating a grocery list because the ingredients and their measurements are not standardized in the database.
