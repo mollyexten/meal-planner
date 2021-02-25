@@ -4,8 +4,8 @@
 // Set up variable for appending elements to bottom part of screen
 const bottom = document.querySelector(".bottom")
 
-// Create a fetchData() function to capture search results based on ingredient
-async function fetchData(ingredient) {
+// Create a showResults() function to capture search results based on ingredient
+async function showResults(ingredient) {
 
   // Store the URL that accesses the API in a variable
   const ingredientURL = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`
@@ -13,7 +13,7 @@ async function fetchData(ingredient) {
   // Make the try/catch part
   try {
     
-    // If invoking fetchData from within the renderRecipe function, the "recipe-bottom" id will need to be removed from bottom
+    // If invoking showResults from within the renderRecipe function, the "recipe-bottom" id will need to be removed from bottom
     bottom.removeAttribute("id");
 
     // Invoke the removeBottom() function to clear any existing search results and recipe
@@ -25,14 +25,23 @@ async function fetchData(ingredient) {
     // Store the meal data array in a variable
     let recipes = response.data.meals
 
-    // Catch recipes that have a null value
+    // Catch recipes that have a null value and indicate that it yielded no results
     if (recipes === null) {
       let noRecipes = document.createElement("p")
       noRecipes.textContent = "No recipes found"
       bottom.append(noRecipes)
       return
     }
-    
+
+    // Report the number of results found
+    if (recipes.length > 0) {
+      recipeCount = document.createElement("p")
+      recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found` : recipeCount.textContent = `${recipes.length} recipe found`
+      recipeCount.style.width = "100%"
+      recipeCount.style.textAlign = "center"
+      bottom.append(recipeCount)
+    }
+
     // Loop through each meal data item, storing image and dish name in variables
     recipes.forEach((recipe) => {
       
@@ -51,7 +60,6 @@ async function fetchData(ingredient) {
       dish.textContent = recipe.strMeal
       dish.className = "search-dish"
       dish.id = recipe.idMeal
-      // let id = recipe.idMeal
       mealDiv.addEventListener("click", (e) => {
         renderRecipe(e.target.id, ingredient)
       })
@@ -60,7 +68,6 @@ async function fetchData(ingredient) {
       
       mealDiv.append(image)
       mealDiv.append(dish)
-
 
     })
     
@@ -81,8 +88,8 @@ form.addEventListener("submit", (e) => {
   // Store the search value in a variable
   let searchValue = document.querySelector("#search-value").value
 
-  // Plug the search value into the fetchData function
-  fetchData(searchValue)
+  // Plug the search value into the showResults function
+  showResults(searchValue)
 
   // Reset the form after the submit button has been clicked
   document.querySelector("#search-value").value = ""
@@ -147,8 +154,8 @@ async function renderRecipe(id, ingredient) {
     bottom.append(recipeDiv)
     recipeDiv.append(image)
     
-    // Invoke showIngredients function to access ingredients with their amounts and append to page after the image
-    showIngredients(recipe)
+    // Invoke listIngredients function to access ingredients with their amounts and append to page after the image
+    listIngredients(recipe)
     
     // Append instructions to the bottom half of the page
     const instructionsDiv = document.createElement("div")
@@ -165,7 +172,7 @@ async function renderRecipe(id, ingredient) {
 
     // Add event listener to back button
     back.addEventListener("click", function() {
-      fetchData(ingredient)
+      showResults(ingredient)
     })
 
     // Obligatory return response
@@ -175,7 +182,7 @@ async function renderRecipe(id, ingredient) {
   }
 }
 
-function showIngredients(obj) {
+function listIngredients(obj) {
   
   // Append the ingredients table to the top half of the recipe (after the image)
   
