@@ -29,10 +29,7 @@ async function fetchData(ingredient) {
     if (recipes === null) {
       let noRecipes = document.createElement("p")
       noRecipes.textContent = "No recipes found"
-      let frown = document.createElement("i")
-      frown.className = "fas fa-frown"
       bottom.append(noRecipes)
-      bottom.append(frown)
       return
     }
     
