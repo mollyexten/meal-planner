@@ -259,6 +259,8 @@ function saveRecipe(id, searchIngredient) {
 
 async function recipeBox(recipes, ingredients) {
   removeBottom()
+  bottom.removeAttribute("id");
+
   let recipeURLs = []
   for (let i = 0; i < recipes.length; i++) {
     recipeURLs.push(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipes[i]}`)
