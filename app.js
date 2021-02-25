@@ -242,10 +242,14 @@ function listIngredients(obj) {
 
 // Create a function to save recipes
 function saveRecipe(id, searchIngredient) {
-  window.localStorage.setItem(id, id)
-  favoriteRecipes.push(window.localStorage.getItem(id))
-  searchIngredients.push(searchIngredient)
-  recipeBox(favoriteRecipes, searchIngredients)
+  if (favoriteRecipes.includes(id)) {
+    recipeBox(favoriteRecipes, searchIngredients)
+  } else {
+    window.localStorage.setItem(id, id)
+    favoriteRecipes.push(window.localStorage.getItem(id))
+    searchIngredients.push(searchIngredient)
+    recipeBox(favoriteRecipes, searchIngredients)
+  }
 }
 
 async function recipeBox(recipes, ingredients) {
