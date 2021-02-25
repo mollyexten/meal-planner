@@ -101,7 +101,7 @@ Both wireframes are also included as PDFs in this GitHub repo.
 |Feb 23| Project Approval | Complete
 |Feb 23-4| Core Application Structure HTML / app.js | Complete
 |Feb 24| Initial Clickable Model | Complete
-|Feb 25| MVP | Incomplete
+|Feb 25| MVP | Complete
 |Feb 26| Styling | Incomplete
 |March 1| Presentations | Incomplete
 
@@ -114,28 +114,32 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Creating Basic HTML Template | H | 1 hr | 1 hr |  |
-| Understanding API | H | 2 hrs | 1 hr 45 min |  |
-| Create click event for search bar info | H | 1 hr | 15 min |  |
-| Render recipe results to page via DOM | H | 2 hrs | 15 min |  |
-| Create remove results function | H | 1 hrs | 15 min |  |
-| Append specific recipe info to page via DOM | H | 2 hrs | 3 hrs |  |
-| Click event load specific recipe | H | 2 hrs | 2 hrs |  |
-| Format photos appended to DOM | H | 1 hrs |  |  |
+| Creating Basic HTML Template | H | 1 hr | 1 hr | 1 hr |
+| Understanding API | H | 2 hrs | 2 hrs | 2 hrs |
+| Create click event for search bar info | H | 1 hr | 15 min | 15 min |
+| Render recipe results to page via DOM | H | 2 hrs | 15 min | 15 min |
+| Create remove results function | H | 1 hrs | 15 min | 15 min |
+| Append specific recipe info to page via DOM | H | 2 hrs | 3 hrs | 3 hrs |
+| Click event load specific recipe | H | 2 hrs | 2 hrs | 2 hrs |
+| Format photos appended to DOM | H | 1 hrs | 15 mins |  |
 | Flexbox for index page | H | 2 hrs | .5 hrs |  |
 | Flexbox for search results | H | 3 hrs | .5 hrs |  |
 | Flexbox for individual recipes | H | 2 hrs | .5 hrs |  |
 | CSS color styling | H | 1 hr | 1 hr |  |
-| Add icons to CSS | H | 1.5 hrs |  |  |
-| Media query for desktop - index | H | 2 hrs |  |  |
+| Add icons to buttons | H | 1.5 hrs |  |  |
+| *ADDED* Stylize the "no results" option | H | 1 hr |  |  |
+| *ADDED* Make click events more noticeable with styling | H | 1.5 hrs |  |  |
+| Media query for desktop - index | H | 2 hrs | .5 hrs |  |
 | Media query for desktop - search | H | 2 hrs | 2 hrs |  |
-| Media query for desktop - recipe | H | 2 hrs |  |  |
+| Media query for desktop - recipe | H | 2 hrs | 1 hr |  |
 | Create a "save recipes" function | H | 3hrs|  |  |
 | Display saved recipes in recipe-box page | H | 2 hrs |  |  |
-| Compile saved recipes' ingredients to grocery list | H | 3 hrs |  |  |
-| Add amounts to grocery list | H | 3 hrs |  |  |
+| ~~Compile saved recipes' ingredients to grocery list~~ | H | 3 hrs |  |  |
+| ~~Add amounts to grocery list~~ | H | 3 hrs |  |  |
+| *ADDED* Stylize the heading - maybe an icon? | H | 1.5 hrs | .5 hrs |  |
 | Organize final CSS | H | 1 hr |  |  |
-| Cleaning up code | H | 1.5 hrs | 15 min |  |
+| *ADDED* Cleaning up code | H | 1.5 hrs | .5 hrs |  |
+| *ADDED* Display number of search results | H | 1.5 hrs |  |  |
 | Total | H | 41.5 hrs|  |  |
 
 ## Code Snippet

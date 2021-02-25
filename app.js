@@ -32,22 +32,29 @@ async function fetchData(ingredient) {
     
     // Loop through each meal data item, storing image and dish name in variables
     recipes.forEach((recipe) => {
+      
+      // Create a container for each image and dish
+      const mealDiv = document.createElement("div")
+      mealDiv.className = "meal-div"
+      bottom.append(mealDiv)
+      
+      // Create html elements for each image and dish with attributes
       let image = document.createElement("img")
       image.src = recipe.strMealThumb
       image.width = "250"
       image.className = "search-image"
+      image.id = recipe.idMeal
       let dish = document.createElement("p")
       dish.textContent = recipe.strMeal
       dish.className = "search-dish"
-      let id = recipe.idMeal
-      dish.addEventListener("click", function() {
-        renderRecipe(id, ingredient)
+      dish.id = recipe.idMeal
+      // let id = recipe.idMeal
+      mealDiv.addEventListener("click", (e) => {
+        renderRecipe(e.target.id, ingredient)
       })
       
       // Create a container for image and dish, append to DOM
-      const mealDiv = document.createElement("div")
-      mealDiv.className = "meal-div"
-      bottom.append(mealDiv)
+      
       mealDiv.append(image)
       mealDiv.append(dish)
 

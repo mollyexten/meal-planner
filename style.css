@@ -33,7 +33,7 @@ h1 {
 .prompt {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #search-value {
@@ -47,7 +47,7 @@ h1 {
   color: #252422;
   border-radius: 8px;
   border: 2px solid gray;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .bottom {
@@ -113,6 +113,15 @@ h1 {
 @media screen and (min-width: 768px) {
   body {
     font-size: 22px;
+  }
+
+  form {
+    display: flex;
+  }
+
+  .prompt {
+    margin-top: 10px;
+    margin-right: 5px;
   }
   
   .bottom {
