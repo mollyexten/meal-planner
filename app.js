@@ -177,8 +177,13 @@ async function renderRecipe(id, ingredient) {
 
     // Append the save button to the recipeButtonDiv
     const save = document.createElement("button")
-    save.textContent = "Save recipe"
-    save.className = "save-button"
+    if (favoriteRecipes.includes(id)) {
+      save.textContent = "Recipe saved"
+      save.className = "already-saved-button"
+    } else {
+      save.textContent = "Save recipe"
+      save.className = "save-button"
+    }
     save.id = id
     recipeButtonDiv.append(save)
     save.addEventListener("click", (e) => {
