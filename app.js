@@ -4,6 +4,7 @@
 // Set up variable for appending elements to bottom part of screen
 const bottom = document.querySelector(".bottom")
 const favoriteRecipes = []
+const searchIngredients = []
 
 // Create a showResults() function to capture search results based on ingredient
 async function showResults(ingredient) {
@@ -182,7 +183,7 @@ async function renderRecipe(id, ingredient) {
     recipeButtonDiv.append(save)
     save.addEventListener("click", (e) => {
       e.target.id = id
-      saveRecipe(e.target.id)
+      saveRecipe(e.target.id, ingredient)
     })
 
     // Add event listener to back button
@@ -240,13 +241,14 @@ function listIngredients(obj) {
 }
 
 // Create a function to save recipes
-function saveRecipe(id) {
+function saveRecipe(id, searchIngredient) {
   window.localStorage.setItem(id, id)
   favoriteRecipes.push(window.localStorage.getItem(id))
-  recipeBox(favoriteRecipes)
+  searchIngredients.push(searchIngredient)
+  recipeBox(favoriteRecipes, searchIngredients)
 }
 
-async function recipeBox(recipes) {
+async function recipeBox(recipes, ingredients) {
   removeBottom()
   let recipeURLs = []
   for (let i = 0; i < recipes.length; i++) {
@@ -293,7 +295,7 @@ async function recipeBox(recipes) {
     
     // Add event listener to back button
     back.addEventListener("click", (e) => {
-      renderRecipe(e.target.className)
+      renderRecipe(e.target.className, ingredients[ingredients.length-1])
     })
     return recipeURLs
   } catch (err) {
