@@ -101,7 +101,7 @@ Both wireframes are also included as PDFs in this GitHub repo.
 |Feb 23| Project Approval | Complete
 |Feb 23-4| Core Application Structure HTML / app.js | Complete
 |Feb 24| Initial Clickable Model | Complete
-|Feb 25| MVP | Complete
+|Feb 25| MVP | Incomplete
 |Feb 26| Styling | Incomplete
 |March 1| Presentations | Incomplete
 
