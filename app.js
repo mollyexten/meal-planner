@@ -13,6 +13,9 @@ async function fetchData(ingredient) {
   // Make the try/catch part
   try {
     
+    // If invoking fetchData from within the renderRecipe function, the "recipe-bottom" id will need to be removed from bottom
+    bottom.removeAttribute("id");
+
     // Invoke the removeBottom() function to clear any existing search results and recipe
     removeBottom()
     
@@ -171,9 +174,6 @@ async function renderRecipe(id, ingredient) {
     console.error(err)
   }
 }
-
-// For now I am calling the function with a specific id because I don't know how to do the redirect
-// renderRecipe("52997")
 
 function showIngredients(obj) {
   

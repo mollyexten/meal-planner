@@ -42,7 +42,7 @@ h1 {
   padding: 5px;
 }
 
-#search-button, #back-button {
+#back-button {
   background-color: #ccc5b9;
   color: #252422;
   border-radius: 8px;
@@ -125,7 +125,7 @@ h1 {
   }
   
   .bottom {
-    display: flex;
+    /* Line up meal-div items horizontally, wrapping to next line */
     flex-flow: row wrap;
     /* Keep meal-div items lined up by photo */
     align-items: flex-start;
