@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Merriweather&family=Montserrat&family=Roboto&display=swap');
 
 * {
   box-sizing: border-box;
@@ -7,6 +11,8 @@
 
 body {
   font-family: 'Nunito', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+  /* font-family: 'Roboto', sans-serif; */
   color: #252422;
   background-color: #fffcf2;
   margin: 0;
@@ -24,6 +30,11 @@ body {
 
 h1 {
   margin-bottom: 0;
+  /* font-family: 'Merriweather', serif; */
+  font-family: 'Bitter', serif;
+  font-size: 48px;
+  letter-spacing: 2px;
+  padding-bottom: 20px;
 }
 
 .search-bar {
@@ -113,6 +124,10 @@ h1 {
 @media screen and (min-width: 768px) {
   body {
     font-size: 22px;
+  }
+
+  h1 {
+    font-size: 60px;
   }
 
   form {

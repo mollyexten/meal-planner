@@ -29,7 +29,10 @@ async function fetchData(ingredient) {
     if (recipes === null) {
       let noRecipes = document.createElement("p")
       noRecipes.textContent = "No recipes found"
+      let frown = document.createElement("i")
+      frown.className = "fas fa-frown"
       bottom.append(noRecipes)
+      bottom.append(frown)
       return
     }
     
@@ -189,13 +192,6 @@ function showIngredients(obj) {
   ingredientsDiv.append(ingredientHeader)
   ingredientTable = document.createElement("table")
   ingredientsDiv.append(ingredientTable)
-
-  // Give the table the title "Ingredients"
-  // const header = ingredientTable.createTHead();
-  // let row = header.insertRow(0);
-  // let cell = row.insertCell(0);
-  // cell.id = "table-header"
-  // cell.textContent = "Ingredients"
   
   // Set up arrays for measurements and ingredients to push into later
   let measurements = []

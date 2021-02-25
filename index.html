@@ -12,12 +12,16 @@
 </head>
 <body class="main-container">
   <div class="item top">
-    <h1>Meal Planner</h1>
+    <!-- Somehow I will add a photo: <span>Photo by <a href="https://unsplash.com/@jennamfeo?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jenna Ebert</a> on <a href="https://unsplash.com/s/photos/onions?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> -->
+    <h1>meal planner</h1>
     <div class="search-bar">
       <form>
         <p class="prompt">Find recipes that contain...</p>
         <input type="text" id="search-value" placeholder="ingredient">
-        <button type="submit"><i class="fas fa-search"></i></button>
+        <!-- This helped me figure out how to get a submit value out of the icon: https://stackoverflow.com/questions/11686007/font-awesome-input-type-submit -->
+        <button type="submit">
+          <i class="fas fa-search"></i>
+        </button>
       </form>
     </div>
   </div>
