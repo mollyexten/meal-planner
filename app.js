@@ -197,19 +197,18 @@ async function renderRecipe(id, ingredient) {
       saveRecipe(e.target.id, ingredient)
     })
     
+    const back = document.createElement("button")
+    back.id = "back-button"
     // Prepend the back button to recipeButtonDiv
-    if (save.textContent != "Recipe saved") {
-      const back = document.createElement("button")
-      back.id = "back-button"
+    if (save.textContent != "Recipe saved") {  
       back.textContent = "Back to results"
-      recipeButtonDiv.prepend(back)
-      back.addEventListener("click", function () {
-        showResults(ingredient)
-      })
     } else {
-      return
+      back.textContent = "Search similar"
     }
-
+    recipeButtonDiv.prepend(back)
+    back.addEventListener("click", function () {
+      showResults(ingredient)
+    })
     // Add event listener to back button
     
 
