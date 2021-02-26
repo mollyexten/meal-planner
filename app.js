@@ -5,11 +5,13 @@
 const bottom = document.querySelector(".bottom")
 const favoriteRecipes = []
 const searchIngredients = []
+const mainHeader = document.querySelector(".main-header")
 
 // Create event listeners for nav-bar icons
 const home = document.querySelector("#home-button")
 // home.addEventListener("click", removeBottom)
 home.addEventListener("click", loadHome)
+mainHeader.addEventListener("click", loadHome)
 
 async function loadHome() {
   removeBottom()
@@ -18,13 +20,15 @@ async function loadHome() {
     let response = await axios.get(randomURL)
     let randomRecipe = response.data.meals[0]
     let randomImage = randomRecipe.strMealThumb
-    // let bottomImageDiv = document.createElement("div")
-    // bottomImageDiv.className = "background-image-div"
     let bottomImage = document.createElement("img")
     bottomImage.src = randomImage
+    bottomImage.id = randomRecipe.idMeal
     bottomImage.className = "background-image"
-    // bottom.append(bottomImageDiv)
-    // bottomImageDiv.append(bottomImage)
+    bottomImage.addEventListener("click", (e) => {
+      renderRecipe(e.target.id, randomRecipe.strIngredient1)
+      window.localStorage.setItem("randomRecipe", e.target.id)
+      console.log(window.localStorage)
+    })
     bottom.append(bottomImage)
     appendFooter()
     return response
@@ -36,17 +40,16 @@ async function loadHome() {
 loadHome()
 
 function appendFooter() {
-  let footer = `<footer>Recipes sourced from <a href="https://www.themealdb.com">TheMealDB</a>(API)</footer>`
+  let footer = `<footer>Recipes sourced from <a href="https://www.themealdb.com">TheMealDB</a> (API)</footer>`
   return bottom.insertAdjacentHTML("beforeend", footer)
 }
 
 const saved = document.querySelector("#saved-button")
-// saved.className = favoriteRecipes
-// saved.id = searchIngredients
+
 saved.addEventListener("click", function () {
   recipeBox(favoriteRecipes, searchIngredients)
 })
-// recipeBox(favoriteRecipes, searchIngredients)
+
 
 // Create a showResults() function to capture search results based on ingredient
 async function showResults(ingredient) {
@@ -233,7 +236,11 @@ async function renderRecipe(id, ingredient) {
     back.id = "back-button"
     // Prepend the back button to recipeButtonDiv
     if (save.textContent != "Recipe saved") {  
-      back.textContent = "Back to results"
+      if (window.localStorage.randomRecipe === id) {
+        back.textContent = "Explore more"
+      } else {
+        back.textContent = "Back to results"
+      }
     } else {
       back.textContent = "Search similar"
     }

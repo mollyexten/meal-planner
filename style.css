@@ -2,7 +2,6 @@
 
 * {
   box-sizing: border-box;
-  /* border: 1px solid black; */
 }
 
 body {
@@ -13,7 +12,10 @@ body {
   display: flex;
   flex-flow: column wrap;
   font-size: 20px;
-  /* position: relative; */
+}
+
+.home-background {
+  background-color: #403d39;
 }
 
 nav {
@@ -40,12 +42,13 @@ nav {
   border:  #eb5e28 1px solid;
 }
 
-h1 {
+.main-header {
   margin-bottom: 0;
   font-family: 'Bitter', serif;
   font-size: 48px;
   letter-spacing: 2px;
   padding-bottom: 20px;
+  cursor: pointer;
 }
 
 .search-bar {
@@ -117,13 +120,9 @@ button {
   align-items: center;
 }
 
-/* .background-image-div {
-  margin: 0;
-  width: 100%;
-} */
-
 .background-image {
   width: 100%;
+  cursor: pointer;
 }
 
 footer {
@@ -192,7 +191,7 @@ footer {
     font-size: 22px;
   }
 
-  h1 {
+  .main-header {
     font-size: 60px;
   }
 
