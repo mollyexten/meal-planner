@@ -6,6 +6,18 @@ const bottom = document.querySelector(".bottom")
 const favoriteRecipes = []
 const searchIngredients = []
 
+// Create event listeners for nav-bar icons
+const home = document.querySelector("#home-button")
+home.addEventListener("click", removeBottom)
+
+const saved = document.querySelector("#saved-button")
+// saved.className = favoriteRecipes
+// saved.id = searchIngredients
+saved.addEventListener("click", function () {
+  recipeBox(favoriteRecipes, searchIngredients)
+})
+// recipeBox(favoriteRecipes, searchIngredients)
+
 // Create a showResults() function to capture search results based on ingredient
 async function showResults(ingredient) {
 
@@ -253,6 +265,8 @@ function saveRecipe(id, searchIngredient) {
     window.localStorage.setItem(id, id)
     favoriteRecipes.push(window.localStorage.getItem(id))
     searchIngredients.push(searchIngredient)
+    console.log(favoriteRecipes)
+    console.log(searchIngredients)
     recipeBox(favoriteRecipes, searchIngredients)
   }
 }
@@ -272,42 +286,48 @@ async function recipeBox(recipes, ingredients) {
       
       let recipe = response.data.meals[0]
       
-      let dish = document.createElement("p")
-      dish.textContent = recipe.strMeal
-      dish.className = "search-dish"
-      dish.id = recipe.idMeal
-      
       let image = document.createElement("img")
       image.src = recipe.strMealThumb
       image.width = "250"
       image.className = "search-image"
       image.id = recipe.idMeal
-
-      recipeIDs.push(image.id)
+      
+      dish = document.createElement("p")
+      dish.textContent = recipe.strMeal
+      dish.className = "search-dish"
+      dish.id = recipe.idMeal
       
       const mealDiv = document.createElement("div")
       mealDiv.className = "meal-div"
       bottom.append(mealDiv)
 
+      mealDiv.addEventListener("click", (e) => {
+        renderRecipe(e.target.id, ingredients[i])
+      })
+      
+      recipeIDs.push(image.id)
+      
       mealDiv.append(image)
       mealDiv.append(dish)
     }
     // Create a div for buttons at the top of the recipe
-    const recipeButtonDiv = document.createElement("div")
-    recipeButtonDiv.className = "recipe-button-div"
-    bottom.prepend(recipeButtonDiv)
+    const savedRecipesHeader = document.createElement("p")
+    recipes.length === 1 ? savedRecipesHeader.textContent = `${recipes.length} recipe saved` : savedRecipesHeader.textContent = `${recipes.length} recipes saved`
+    savedRecipesHeader.style.width = "100%"
+    savedRecipesHeader.style.textAlign = "center"
+    bottom.prepend(savedRecipesHeader)
     
     // Append the back button to recipeButtonDiv
-    const back = document.createElement("button")
-    back.textContent = "Back to recipe"
-    back.id = "back-button"
-    back.className = recipeIDs[recipeIDs.length-1]
-    recipeButtonDiv.append(back)
+    // const back = document.createElement("button")
+    // back.textContent = "Back to recipe"
+    // back.id = "back-button"
+    // back.className = recipeIDs[recipeIDs.length-1]
+    // recipeButtonDiv.append(back)
     
     // Add event listener to back button
-    back.addEventListener("click", (e) => {
-      renderRecipe(e.target.className, ingredients[ingredients.length-1])
-    })
+    // back.addEventListener("click", (e) => {
+    //   renderRecipe(e.target.className, ingredients[ingredients.length-1])
+    // })
     return recipeURLs
   } catch (err) {
     console.error(err)
