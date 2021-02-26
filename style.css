@@ -219,6 +219,11 @@ button {
   }
 }
 
+.footer {
+  font-size: 12px;
+  text-align: center;
+}
+
 @media screen and (min-width: 900px) {
   .recipe-div {
     width: 100%;
