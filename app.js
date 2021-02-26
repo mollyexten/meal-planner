@@ -18,10 +18,15 @@ async function loadHome() {
     let response = await axios.get(randomURL)
     let randomRecipe = response.data.meals[0]
     let randomImage = randomRecipe.strMealThumb
+    // let bottomImageDiv = document.createElement("div")
+    // bottomImageDiv.className = "background-image-div"
     let bottomImage = document.createElement("img")
     bottomImage.src = randomImage
     bottomImage.className = "background-image"
+    // bottom.append(bottomImageDiv)
+    // bottomImageDiv.append(bottomImage)
     bottom.append(bottomImage)
+    appendFooter()
     return response
   } catch (err) {
     console.error(err)
@@ -29,6 +34,12 @@ async function loadHome() {
 }
 
 loadHome()
+
+function appendFooter() {
+  const footer = document.createElement("footer")
+  footer.textContent = "Recipes sourced from TheMealDB (API)"
+  bottom.append(footer)
+}
 
 const saved = document.querySelector("#saved-button")
 // saved.className = favoriteRecipes
