@@ -181,12 +181,6 @@ async function renderRecipe(id, ingredient) {
     recipeButtonDiv.className = "recipe-button-div"
     bottom.prepend(recipeButtonDiv)
 
-    // Append the back button to recipeButtonDiv
-    const back = document.createElement("button")
-    back.textContent = "Back to results"
-    back.id = "back-button"
-    recipeButtonDiv.append(back)
-
     // Append the save button to the recipeButtonDiv
     const save = document.createElement("button")
     if (favoriteRecipes.includes(id)) {
@@ -202,11 +196,22 @@ async function renderRecipe(id, ingredient) {
       e.target.id = id
       saveRecipe(e.target.id, ingredient)
     })
+    
+    // Prepend the back button to recipeButtonDiv
+    if (save.textContent != "Recipe saved") {
+      const back = document.createElement("button")
+      back.id = "back-button"
+      back.textContent = "Back to results"
+      recipeButtonDiv.prepend(back)
+      back.addEventListener("click", function () {
+        showResults(ingredient)
+      })
+    } else {
+      return
+    }
 
     // Add event listener to back button
-    back.addEventListener("click", function() {
-      showResults(ingredient)
-    })
+    
 
     // Obligatory return response
     return response
@@ -317,17 +322,6 @@ async function recipeBox(recipes, ingredients) {
     savedRecipesHeader.style.textAlign = "center"
     bottom.prepend(savedRecipesHeader)
     
-    // Append the back button to recipeButtonDiv
-    // const back = document.createElement("button")
-    // back.textContent = "Back to recipe"
-    // back.id = "back-button"
-    // back.className = recipeIDs[recipeIDs.length-1]
-    // recipeButtonDiv.append(back)
-    
-    // Add event listener to back button
-    // back.addEventListener("click", (e) => {
-    //   renderRecipe(e.target.className, ingredients[ingredients.length-1])
-    // })
     return recipeURLs
   } catch (err) {
     console.error(err)

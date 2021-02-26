@@ -132,7 +132,7 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | Media query for desktop - index | H | 2 hrs | .5 hrs |  |
 | Media query for desktop - search | H | 2 hrs | 2.5 hrs |  |
 | Media query for desktop - recipe | H | 2 hrs | 1 hr |  |
-| Create a "save recipes" function | H | 3hrs| 1.5 hrs |  |
+| Create a "save recipes" function | H | 3hrs| 3 hrs |  |
 | Display saved recipes in recipe-box page | H | 2 hrs | 2 hrs |  |
 | ~~Compile saved recipes' ingredients to grocery list~~ | ~~H~~ | ~~3 hrs~~ |  |  |
 | ~~Add amounts to grocery list~~ | ~~H~~ | ~~3 hrs~~ |  |  |
@@ -140,7 +140,7 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | Organize final CSS | H | 1 hr |  |  |
 | *ADDED* Cleaning up code | H | 1.5 hrs | .5 hrs |  |
 | *ADDED* Display number of search results | H | 1.5 hrs | .5 hrs |  |
-| Total | H | 41.5 hrs| 24 hrs |  |
+| Total | H | 43 hrs| 24 hrs |  |
 
 ## Code Snippet
 
