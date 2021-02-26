@@ -112,6 +112,8 @@ async function showResults(ingredient) {
       mealDiv.append(image)
       mealDiv.append(dish)
     })
+
+    appendFooter()
     
     // Obligatory "return response" part
     return response
@@ -240,7 +242,6 @@ async function renderRecipe(id, ingredient) {
       showResults(ingredient)
     })
     // Add event listener to back button
-    
 
     // Obligatory return response
     return response

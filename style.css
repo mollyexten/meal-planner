@@ -126,6 +126,10 @@ button {
   width: 100%;
 }
 
+footer {
+  width: 100%;
+}
+
 .meal-div {
   display: flex;
   flex-flow: column wrap;
