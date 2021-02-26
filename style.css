@@ -116,6 +116,10 @@ button {
   align-items: center;
 }
 
+.background-image {
+  width: 100%;
+}
+
 .meal-div {
   display: flex;
   flex-flow: column wrap;

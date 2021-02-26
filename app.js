@@ -20,14 +20,15 @@ async function loadHome() {
     let randomImage = randomRecipe.strMealThumb
     let bottomImage = document.createElement("img")
     bottomImage.src = randomImage
+    bottomImage.className = "background-image"
     bottom.append(bottomImage)
-    console.log(randomImage)
     return response
   } catch (err) {
     console.error(err)
   }
-  // const randomImage = document.createElement("img")
 }
+
+loadHome()
 
 const saved = document.querySelector("#saved-button")
 // saved.className = favoriteRecipes
