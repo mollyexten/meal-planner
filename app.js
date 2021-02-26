@@ -36,9 +36,8 @@ async function loadHome() {
 loadHome()
 
 function appendFooter() {
-  const footer = document.createElement("footer")
-  footer.textContent = "Recipes sourced from TheMealDB (API)"
-  bottom.append(footer)
+  let footer = `<footer>Recipes sourced from <a href="https://www.themealdb.com">TheMealDB</a>(API)</footer>`
+  return bottom.insertAdjacentHTML("beforeend", footer)
 }
 
 const saved = document.querySelector("#saved-button")
