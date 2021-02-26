@@ -15,6 +15,7 @@ mainHeader.addEventListener("click", loadHome)
 
 async function loadHome() {
   removeBottom()
+  bottom.removeAttribute("id")
   const randomURL = "https://www.themealdb.com/api/json/v1/1/random.php"
   try {
     let response = await axios.get(randomURL)

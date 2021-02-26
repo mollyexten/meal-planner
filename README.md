@@ -121,26 +121,26 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | Create remove results function | H | 1 hrs | .5 hrs | .5 hrs |
 | Append specific recipe info to page via DOM | H | 2 hrs | 3 hrs | 3 hrs |
 | Click event load specific recipe | H | 2 hrs | 2 hrs | 2 hrs |
-| Format photos appended to DOM | H | 1 hrs | .5 hrs |  |
-| Flexbox for index page | H | 2 hrs | .5 hrs |  |
+| Format photos appended to DOM | H | 1 hr | 1 hr |  |
+| Flexbox for index page | H | 2 hrs | 1.5 hrs |  |
 | Flexbox for search results | H | 3 hrs | .5 hrs |  |
 | Flexbox for individual recipes | H | 2 hrs | .5 hrs |  |
 | CSS color and font styling | H | 1 hr | 1.5 hrs |  |
 | Add icons to buttons | H | 1.5 hrs | 1 hr |  |
 | *ADDED* Stylize the "no results" option | H | 1 hr | .5 hrs |  |
 | *ADDED* Make click events more noticeable with styling | H | 1.5 hrs | .5 hrs |  |
-| Media query for desktop - index | H | 2 hrs | .5 hrs |  |
+| Media query for desktop - index | H | 2 hrs | 2 hrs |  |
 | Media query for desktop - search | H | 2 hrs | 2.5 hrs |  |
 | Media query for desktop - recipe | H | 2 hrs | 1 hr |  |
 | Create a "save recipes" function | H | 3hrs| 3 hrs |  |
 | Display saved recipes in recipe-box page | H | 2 hrs | 2 hrs |  |
 | ~~Compile saved recipes' ingredients to grocery list~~ | ~~H~~ | ~~3 hrs~~ |  |  |
 | ~~Add amounts to grocery list~~ | ~~H~~ | ~~3 hrs~~ |  |  |
-| *ADDED* Stylize the heading - maybe an icon? | H | 1.5 hrs | .5 hrs |  |
+| *ADDED* Stylize the heading - maybe an icon? | H | 1.5 hrs | 1 hrs |  |
 | Organize final CSS | H | 1 hr |  |  |
 | *ADDED* Cleaning up code | H | 1.5 hrs | .5 hrs |  |
 | *ADDED* Display number of search results | H | 1.5 hrs | .5 hrs |  |
-| Total | H | 43 hrs| 24 hrs |  |
+| Total | H | 43 hrs| 28 hrs |  |
 
 ## Code Snippet
 
