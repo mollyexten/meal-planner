@@ -8,7 +8,26 @@ const searchIngredients = []
 
 // Create event listeners for nav-bar icons
 const home = document.querySelector("#home-button")
-home.addEventListener("click", removeBottom)
+// home.addEventListener("click", removeBottom)
+home.addEventListener("click", loadHome)
+
+async function loadHome() {
+  removeBottom()
+  const randomURL = "https://www.themealdb.com/api/json/v1/1/random.php"
+  try {
+    let response = await axios.get(randomURL)
+    let randomRecipe = response.data.meals[0]
+    let randomImage = randomRecipe.strMealThumb
+    let bottomImage = document.createElement("img")
+    bottomImage.src = randomImage
+    bottom.append(bottomImage)
+    console.log(randomImage)
+    return response
+  } catch (err) {
+    console.error(err)
+  }
+  // const randomImage = document.createElement("img")
+}
 
 const saved = document.querySelector("#saved-button")
 // saved.className = favoriteRecipes
