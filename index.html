@@ -12,25 +12,22 @@
 </head>
 <body class="main-container">
     <nav>
-      <i class="fas fa-home nav-icon" id="home-button" title="home"></i>
+      <i class="fas fa-home nav-icon home-redirect" id="home-button" title="home"></i>
       <i class="fas fa-archive nav-icon" id="saved-button" title="saved recipes"></i>
     </nav>
-    <div class="top">
-    <h1 class="main-header">meal planner</h1>
-    <div class="search-bar">
-      <form>
-        <p class="prompt">Find recipes that contain...</p>
-        <input type="text" id="search-value" placeholder="ingredient">
-        <!-- This helped me figure out how to get a submit value out of the icon: https://stackoverflow.com/questions/11686007/font-awesome-input-type-submit -->
-        <button type="submit" class="search-button">
-          <i class="fas fa-search fa-2x" title="search"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-  <div class="bottom"></div>
-  <!-- <footer>
-      <p class="footer">Recipes sourced from <a href="https://www.themealdb.com">TheMealDB</a> (API)</p>
-  </footer> -->
+    <header>
+      <h1 class="header-h1 home-redirect">meal planner</h1>
+      <div class="search-bar">
+        <form>
+          <p class="prompt">Find recipes that contain...</p>
+          <input type="text" id="search-value" placeholder="ingredient">
+          <!-- This helped me figure out how to get a submit value out of the icon: https://stackoverflow.com/questions/11686007/font-awesome-input-type-submit -->
+          <button type="submit" class="search-button">
+            <i class="fas fa-search fa-2x" title="search"></i>
+          </button>
+        </form>
+      </div>
+    </header>
+  <main></main>
 </body>
 </html>

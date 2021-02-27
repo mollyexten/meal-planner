@@ -1,36 +1,49 @@
-// API doc for searching by ingredients https://www.themealdb.com/api/json/v1/1/filter.php?i=rice
-// API doc for searching by recipe id https://www.themealdb.com/api/json/v1/1/lookup.php?i=52997
-
-// Set up variable for appending elements to bottom part of screen
-const bottom = document.querySelector(".bottom")
+// Global variables
+const main = document.querySelector("main")
+// Arrays for storing saved recipe information from local storage
 const favoriteRecipes = []
 const searchIngredients = []
-const mainHeader = document.querySelector(".main-header")
 
-// Create event listeners for nav-bar icons
+// Display random image with link to recipe on home page
+loadHome()
+
+// Event listeners for nav bar icons and header
 const home = document.querySelector("#home-button")
-// home.addEventListener("click", removeBottom)
 home.addEventListener("click", loadHome)
+const saved = document.querySelector("#saved-button")
+saved.addEventListener("click", function () {
+  viewRecipeBox(favoriteRecipes, searchIngredients)
+})
+const mainHeader = document.querySelector(".header-h1")
 mainHeader.addEventListener("click", loadHome)
 
+// Event listener for the search bar
+const form = document.querySelector("form")
+form.addEventListener("submit", (e) => {
+  e.preventDefault()
+  let searchValue = document.querySelector("#search-value").value
+  showResults(searchValue)
+  document.querySelector("#search-value").value = ""
+})
+
+// Load a random recipe image in the "home page"
 async function loadHome() {
-  removeBottom()
-  bottom.removeAttribute("id")
+  removeMain()
+  main.removeAttribute("id")
   const randomURL = "https://www.themealdb.com/api/json/v1/1/random.php"
   try {
     let response = await axios.get(randomURL)
     let randomRecipe = response.data.meals[0]
     let randomImage = randomRecipe.strMealThumb
-    let bottomImage = document.createElement("img")
-    bottomImage.src = randomImage
-    bottomImage.id = randomRecipe.idMeal
-    bottomImage.className = "background-image"
-    bottomImage.addEventListener("click", (e) => {
+    let mainImage = document.createElement("img")
+    mainImage.src = randomImage
+    mainImage.id = randomRecipe.idMeal
+    mainImage.className = "background-image"
+    mainImage.addEventListener("click", (e) => {
       renderRecipe(e.target.id, randomRecipe.strIngredient1)
       window.localStorage.setItem("randomRecipe", e.target.id)
-      console.log(window.localStorage)
     })
-    bottom.append(bottomImage)
+    main.append(mainImage)
     appendFooter()
     return response
   } catch (err) {
@@ -38,21 +51,20 @@ async function loadHome() {
   }
 }
 
-loadHome()
-
-function appendFooter() {
-  let footer = `<footer>Recipes sourced from <a href="https://www.themealdb.com">TheMealDB</a> (API)</footer>`
-  return bottom.insertAdjacentHTML("beforeend", footer)
+// Remove all appended child elements in the main part
+function removeMain() {
+  while (main.lastChild) {
+    main.removeChild(main.lastChild)
+  }
 }
 
-const saved = document.querySelector("#saved-button")
+// Add a footer citing the API
+function appendFooter() {
+  let footer = `<footer>Recipes sourced from <a href="https://www.themealdb.com">TheMealDB</a> (API)</footer>`
+  return main.insertAdjacentHTML("beforeend", footer)
+}
 
-saved.addEventListener("click", function () {
-  recipeBox(favoriteRecipes, searchIngredients)
-})
-
-
-// Create a showResults() function to capture search results based on ingredient
+// Display search results based on ingredient
 async function showResults(ingredient) {
 
   // Store the URL that accesses the API in a variable
@@ -61,11 +73,11 @@ async function showResults(ingredient) {
   // Make the try/catch part
   try {
     
-    // If invoking showResults from within the renderRecipe function, the "recipe-bottom" id will need to be removed from bottom
-    bottom.removeAttribute("id");
+    // If invoking showResults from within the renderRecipe function, the "recipe-main" id will need to be removed from main
+    main.removeAttribute("id");
 
-    // Invoke the removeBottom() function to clear any existing search results and recipe
-    removeBottom()
+    // Invoke the removeMain() function to clear any existing search results and recipe
+    removeMain()
     
     // Access the API
     let response = await axios.get(ingredientURL)
@@ -77,7 +89,7 @@ async function showResults(ingredient) {
     if (recipes === null) {
       let noRecipes = document.createElement("p")
       noRecipes.textContent = "No recipes found"
-      bottom.append(noRecipes)
+      main.append(noRecipes)
       return
     }
 
@@ -87,7 +99,7 @@ async function showResults(ingredient) {
       recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found` : recipeCount.textContent = `${recipes.length} recipe found`
       recipeCount.style.width = "100%"
       recipeCount.style.textAlign = "center"
-      bottom.append(recipeCount)
+      main.append(recipeCount)
     }
 
     // Loop through each meal data item, storing image and dish name in variables
@@ -96,7 +108,7 @@ async function showResults(ingredient) {
       // Create a container for each image and dish
       const mealDiv = document.createElement("div")
       mealDiv.className = "meal-div"
-      bottom.append(mealDiv)
+      main.append(mealDiv)
       
       // Create html elements for each image and dish with attributes
       let image = document.createElement("img")
@@ -116,106 +128,80 @@ async function showResults(ingredient) {
       mealDiv.append(image)
       mealDiv.append(dish)
     })
-
     appendFooter()
-    
-    // Obligatory "return response" part
     return response
   } catch (err) {
     console.error(err)
   }
 }
 
-// Event listener for the search button
-const form = document.querySelector("form")
-form.addEventListener("submit", (e) => {
-  
-  // Prevent search bar from clearing before value can be extracted
-  e.preventDefault()
-  
-  // Store the search value in a variable
-  let searchValue = document.querySelector("#search-value").value
-
-  // Plug the search value into the showResults function
-  showResults(searchValue)
-
-  // Reset the form after the submit button has been clicked
-  document.querySelector("#search-value").value = ""
-})
-
-// removeBottom function to take out existing search results or recipe
-function removeBottom() {
-
-  // Loop through the child elements of the div, removing each one until there are none left
-  while (bottom.lastChild) {
-    bottom.removeChild(bottom.lastChild)
-  }
-}
-
-// Create a renderRecipe() function to display the photo, ingredients, and directions
-
+// Display the photo, ingredients, and instructions for a specific recipe
 async function renderRecipe(id, ingredient) {
-  
-  // Remove search results
-  removeBottom()
+  removeMain()
   
   // Store the URL that accesses the API in a variable
   const recipeURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
   
-  // Make the try/catch part
   try {
 
     // Access the API
     let response = await axios.get(recipeURL)
     let recipe = response.data.meals[0]
 
-    // Store recipe name in variable "name"
+    // Assign id to main to allow recipe formatting
+    main.id = "recipe-main"
+
+    // Create recipe name element and append to main
     let name = document.createElement("p")
     name.textContent = recipe.strMeal
     name.className = "recipe-headers"
     name.id = "recipe-name"
-
-    // Store recipe image in variable "image"
-    let image = document.createElement("img")
-    image.src = recipe.strMealThumb
-    image.width = "300"
-    image.className = "recipe-image"
-
-    // Create a header for recipe instructions
-    let instructionsHeader = document.createElement("p")
-    instructionsHeader.textContent = "Instructions"
-    instructionsHeader.className = "recipe-headers"
-    
-    
-    // Store recipe instructions in variable "instructions"
-    let instructions = document.createElement("p")
-    instructions.textContent = recipe.strInstructions
-    instructions.className = "instructions"
-    
-    // Append name to bottom half of page
-    bottom.id = "recipe-bottom"
-    bottom.append(name)
+    main.append(name)
 
     // Create a div to store image and ingredients
     const recipeDiv = document.createElement("div")
     recipeDiv.className = "recipe-div"
-    bottom.append(recipeDiv)
+    let image = document.createElement("img")
+    image.src = recipe.strMealThumb
+    image.className = "recipe-image"
+    main.append(recipeDiv)
     recipeDiv.append(image)
-    
-    // Invoke listIngredients function to access ingredients with their amounts and append to page after the image
+
+    // Append ingredients within this function
     listIngredients(recipe)
-    
-    // Append instructions to the bottom half of the page
+
+    // Create a div for the instructions
     const instructionsDiv = document.createElement("div")
     instructionsDiv.className = "instructions-div"
-    bottom.append(instructionsDiv)
+    main.append(instructionsDiv)
+
+    // Create instructions header and paragraph and append
+    let instructionsHeader = document.createElement("p")
+    instructionsHeader.textContent = "Instructions"
+    instructionsHeader.className = "recipe-headers"
+    let instructions = document.createElement("p")
+    instructions.textContent = recipe.strInstructions
+    instructions.className = "instructions"
     instructionsDiv.append(instructionsHeader)
     instructionsDiv.append(instructions)
     
-    // Create a div for buttons at the top of the recipe
+    // Create a recipe button div and prepend to the main part
     const recipeButtonDiv = document.createElement("div")
     recipeButtonDiv.className = "recipe-button-div"
-    bottom.prepend(recipeButtonDiv)
+    main.prepend(recipeButtonDiv)
+
+    // Append back button
+    const back = document.createElement("button")
+    back.id = "back-button"
+    if (favoriteRecipes.includes(id)) {  
+      back.textContent = "Explore more"
+    } else {
+      back.textContent = "Back to results"
+    }
+    recipeButtonDiv.append(back)
+    back.addEventListener("click", function () {
+      showResults(ingredient)
+    })
 
     // Append the save button to the recipeButtonDiv
     const save = document.createElement("button")
@@ -232,26 +218,7 @@ async function renderRecipe(id, ingredient) {
       e.target.id = id
       saveRecipe(e.target.id, ingredient)
     })
-    
-    const back = document.createElement("button")
-    back.id = "back-button"
-    // Prepend the back button to recipeButtonDiv
-    if (save.textContent != "Recipe saved") {  
-      if (window.localStorage.randomRecipe === id) {
-        back.textContent = "Explore more"
-      } else {
-        back.textContent = "Back to results"
-      }
-    } else {
-      back.textContent = "Search similar"
-    }
-    recipeButtonDiv.prepend(back)
-    back.addEventListener("click", function () {
-      showResults(ingredient)
-    })
-    // Add event listener to back button
 
-    // Obligatory return response
     return response
   } catch (err) {
     console.error(err)
@@ -260,16 +227,17 @@ async function renderRecipe(id, ingredient) {
 
 function listIngredients(obj) {
   
-  // Append the ingredients table to the top half of the recipe (after the image)
-  
+  // Create elements for ingredients table and append after image
   recipeDiv = document.querySelector(".recipe-div")
   ingredientsDiv = document.createElement("div")
   ingredientsDiv.className = "ingredients-div"
   recipeDiv.append(ingredientsDiv)
+  
   ingredientHeader = document.createElement("p")
   ingredientHeader.textContent = "Ingredients"
   ingredientHeader.className = "recipe-headers"
   ingredientsDiv.append(ingredientHeader)
+  
   ingredientTable = document.createElement("table")
   ingredientsDiv.append(ingredientTable)
   
@@ -300,24 +268,24 @@ function listIngredients(obj) {
   }
 }
 
-// Create a function to save recipes
+// Keep track of saved recipes
 function saveRecipe(id, searchIngredient) {
+  // Check for duplicate recipes
   if (favoriteRecipes.includes(id)) {
-    recipeBox(favoriteRecipes, searchIngredients)
+    viewRecipeBox(favoriteRecipes, searchIngredients)
   } else {
     window.localStorage.setItem(id, id)
     favoriteRecipes.push(window.localStorage.getItem(id))
     searchIngredients.push(searchIngredient)
-    console.log(favoriteRecipes)
-    console.log(searchIngredients)
-    recipeBox(favoriteRecipes, searchIngredients)
+    viewRecipeBox(favoriteRecipes, searchIngredients)
   }
 }
 
-async function recipeBox(recipes, ingredients) {
-  removeBottom()
-  bottom.removeAttribute("id");
+async function viewRecipeBox(recipes, ingredients) {
+  removeMain()
+  main.removeAttribute("id");
 
+  // Create an array for recipe URLs
   let recipeURLs = []
   for (let i = 0; i < recipes.length; i++) {
     recipeURLs.push(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipes[i]}`)
@@ -326,39 +294,38 @@ async function recipeBox(recipes, ingredients) {
     let recipeIDs = []
     for (let i = 0; i < recipeURLs.length; i++) {
       let response = await axios.get(recipeURLs[i])
-      
       let recipe = response.data.meals[0]
       
+      // Create a div for each recipe and store image and name
+      const mealDiv = document.createElement("div")
+      mealDiv.className = "meal-div"
+      main.append(mealDiv)
+
       let image = document.createElement("img")
       image.src = recipe.strMealThumb
       image.width = "250"
       image.className = "search-image"
       image.id = recipe.idMeal
-      
-      dish = document.createElement("p")
+      mealDiv.append(image)
+
+      let dish = document.createElement("p")
       dish.textContent = recipe.strMeal
       dish.className = "search-dish"
       dish.id = recipe.idMeal
-      
-      const mealDiv = document.createElement("div")
-      mealDiv.className = "meal-div"
-      bottom.append(mealDiv)
-
+      mealDiv.append(dish)
       mealDiv.addEventListener("click", (e) => {
         renderRecipe(e.target.id, ingredients[i])
       })
       
       recipeIDs.push(image.id)
-      
-      mealDiv.append(image)
-      mealDiv.append(dish)
     }
-    // Create a div for buttons at the top of the recipe
+    
+    // Indicate how many recipes are saved at the top of main
     const savedRecipesHeader = document.createElement("p")
     recipes.length === 1 ? savedRecipesHeader.textContent = `${recipes.length} recipe saved` : savedRecipesHeader.textContent = `${recipes.length} recipes saved`
     savedRecipesHeader.style.width = "100%"
     savedRecipesHeader.style.textAlign = "center"
-    bottom.prepend(savedRecipesHeader)
+    main.prepend(savedRecipesHeader)
     
     return recipeURLs
   } catch (err) {

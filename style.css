@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+/* ==========================================================================
+   Global Styles
+========================================================================== */
+
 body {
   font-family: 'Nunito', sans-serif;
   color: #252422;
@@ -14,9 +18,9 @@ body {
   font-size: 20px;
 }
 
-.home-background {
-  background-color: #403d39;
-}
+/* ==========================================================================
+   Nav Styles
+========================================================================== */
 
 nav {
   padding-top: 5px;
@@ -33,7 +37,11 @@ nav {
   cursor: pointer;
 }
 
-.top {
+/* ==========================================================================
+   Header Styles
+========================================================================== */
+
+header {
   background-color: #eb5e28;
   margin-top: 0;
   display: flex;
@@ -42,14 +50,18 @@ nav {
   border:  #eb5e28 1px solid;
 }
 
-.main-header {
+.header-h1 {
   margin-bottom: 0;
   font-family: 'Bitter', serif;
-  font-size: 48px;
+  font-size: 44px;
   letter-spacing: 2px;
   padding-bottom: 20px;
   cursor: pointer;
 }
+
+/* ==========================================================================
+   Search Bar Styles
+========================================================================== */
 
 .search-bar {
   margin-bottom: 30px;
@@ -63,7 +75,6 @@ nav {
 
 #search-value {
   font-size: 18px;
-  /* border-radius: 8px; */
   padding: 5px;
 }
 
@@ -89,6 +100,63 @@ button {
   color: #252422;
 }
 
+/* ==========================================================================
+   Home Page View
+========================================================================== */
+
+.background-image {
+  width: 100%;
+  cursor: pointer;
+}
+
+footer {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Search and Saved View
+========================================================================== */
+
+main {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.meal-div {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.search-dish {
+  padding: 5px;
+  width: 250px;
+  margin-top: 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.search-dish:hover {
+  text-decoration: underline;
+}
+
+.search-image {
+  padding: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Recipe View
+========================================================================== */
+
+  /* =====================================================================
+      Buttons at the Top
+  ===================================================================== */
+
 .recipe-button-div {
   width: 100%;
   display: flex;
@@ -113,45 +181,9 @@ button {
   color: #fffcf2;
 }
 
-.bottom {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.background-image {
-  width: 100%;
-  cursor: pointer;
-}
-
-footer {
-  width: 100%;
-}
-
-.meal-div {
-  display: flex;
-  flex-flow: column wrap;
-}
-
-.search-dish {
-  padding: 5px;
-  width: 250px;
-  margin-top: 0;
-  text-align: center;
-  cursor: pointer;
-}
-
-.search-dish:hover {
-  text-decoration: underline;
-}
-
-.search-image {
-  padding: 5px;
-  margin-top: 20px;
-  /* border-radius: 10px; */
-  cursor: pointer;
-}
+/* =====================================================================
+      Detailed Recipe
+  ===================================================================== */
 
 #recipe-name {
   font-size: 30px;
@@ -165,10 +197,6 @@ footer {
   box-sizing: border-box;
 }
 
-/* #back-button {
-  margin-top: 10px;
-} */
-
 .recipe-headers {
   text-align: center;
   font-size: 24px;
@@ -178,6 +206,7 @@ footer {
 
 .recipe-image {
   margin-top: 10px;
+  width: 300px;
 }
 
 .instructions {
@@ -186,12 +215,16 @@ footer {
   line-height: 140%;
 }
 
+/* ==========================================================================
+   Breakpoints
+========================================================================== */
+
 @media screen and (min-width: 768px) {
   body {
     font-size: 22px;
   }
 
-  .main-header {
+  .header-h1 {
     font-size: 60px;
   }
 
@@ -204,7 +237,7 @@ footer {
     margin-right: 5px;
   }
   
-  .bottom {
+  main {
     /* Line up meal-div items horizontally, wrapping to next line */
     flex-flow: row wrap;
     /* Keep meal-div items lined up by photo */
@@ -216,7 +249,7 @@ footer {
     padding: 5px;
   }
 
-  #recipe-bottom {
+  #recipe-main {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
@@ -232,15 +265,14 @@ footer {
   }
 }
 
-footer {
-  font-size: 12px;
-  text-align: center;
-}
-
 @media screen and (min-width: 900px) {
   .recipe-div {
     width: 100%;
     justify-content: space-evenly;
+  }
+
+  .header-h1 {
+    font-size: 88px;
   }
 }
 
