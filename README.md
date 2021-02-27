@@ -102,7 +102,7 @@ Both wireframes are also included as PDFs in this GitHub repo.
 |Feb 23-4| Core Application Structure HTML / app.js | Complete
 |Feb 24| Initial Clickable Model | Complete
 |Feb 25| MVP | Complete
-|Feb 26| Styling | Incomplete
+|Feb 26| Styling | Complete
 |March 1| Presentations | Incomplete
 
 ## Priority Matrix
@@ -123,34 +123,55 @@ The priority matrix can also be viewed as a PDF in this GitHub repo.
 | Click event load specific recipe | H | 2 hrs | 2 hrs | 2 hrs |
 | Format photos appended to DOM | H | 1 hr | 1 hr |  |
 | Flexbox for index page | H | 2 hrs | 1.5 hrs |  |
-| Flexbox for search results | H | 3 hrs | .5 hrs |  |
-| Flexbox for individual recipes | H | 2 hrs | .5 hrs |  |
+| Flexbox for search results | H | 3 hrs | 1 hr |  |
+| Flexbox for individual recipes | H | 2 hrs | 1 hr |  |
 | CSS color and font styling | H | 1 hr | 1.5 hrs |  |
 | Add icons to buttons | H | 1.5 hrs | 1 hr |  |
 | *ADDED* Stylize the "no results" option | H | 1 hr | .5 hrs |  |
 | *ADDED* Make click events more noticeable with styling | H | 1.5 hrs | .5 hrs |  |
 | Media query for desktop - index | H | 2 hrs | 2 hrs |  |
 | Media query for desktop - search | H | 2 hrs | 2.5 hrs |  |
-| Media query for desktop - recipe | H | 2 hrs | 1 hr |  |
+| Media query for desktop - recipe | H | 2 hrs | 2 hr |  |
 | Create a "save recipes" function | H | 3hrs| 3 hrs |  |
 | Display saved recipes in recipe-box page | H | 2 hrs | 2 hrs |  |
 | ~~Compile saved recipes' ingredients to grocery list~~ | ~~H~~ | ~~3 hrs~~ |  |  |
 | ~~Add amounts to grocery list~~ | ~~H~~ | ~~3 hrs~~ |  |  |
 | *ADDED* Stylize the heading - maybe an icon? | H | 1.5 hrs | 1 hrs |  |
-| Organize final CSS | H | 1 hr |  |  |
-| *ADDED* Cleaning up code | H | 1.5 hrs | .5 hrs |  |
-| *ADDED* Display number of search results | H | 1.5 hrs | .5 hrs |  |
-| Total | H | 43 hrs| 28 hrs |  |
+| Organize final CSS | H | 1 hr | 1 hr |  |
+| *ADDED* Cleaning up code | H | 1.5 hrs | 2.5 hrs |  |
+| *ADDED* Display number of search results | H | 1.5 hrs | 1 hr |  |
+| Total | H | 43 hrs| 33 hrs |  |
 
 ## Code Snippet
 
-(Coming soon) I am proud of this piece of my code:
+For this assignment, I had to figure out how to match up the ingredients with their amounts and append all of it to a table. I used a for... in loop to do it:
 
 ```
-function codey(mcCoderson) {
-	// codey code code
-}
+  for (let key in obj) {
+    // This reference showed me how to check if a string contains a substring: https://flaviocopes.com/how-to-string-contains-substring-javascript/
+    if (key.includes("strMeasure") && (obj[key] != " " || obj[key] != "")) {
+      measurements.push(obj[key])
+    }
+  }
+  for (let key in obj) {
+    if (key.includes("strIngredient") && (obj[key] != "" || obj[key] != " ")) {
+      ingredients.push(obj[key])
+    }
+  }
+
+  // Fill in the table with measurement and ingredient arrays
+  for (let i = 0; i < measurements.length; i++) {
+    let row = ingredientTable.insertRow(i)
+    let cell1 = row.insertCell(0)
+    let cell2 = row.insertCell(1)
+    cell1.textContent = measurements[i]
+    cell2.textContent = ingredients[i]
+  }
 ```
 
 ## Change Log
 I decided not to pursue the post-MVP goal of creating a grocery list because the ingredients and their measurements are not standardized in the database.
+
+I spent a lot of time cleaning up the code at the end.
+
+I tried to create a helper function that added attributes to images, but it created a lot of formatting problems, so I abandoned the idea.
