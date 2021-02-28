@@ -3,3 +3,12 @@ How to Improve Meal Planner:
 2. Change "Explore More" button to take a URL that lists search results by meal category instead of just the first ingredient
 3. Make the mobile view look more appealing
 4. Figure out how to make a better header for mobile view
+
+In recipe view:
+Change id of main "recipe-main" to "recipe-view"
+Change class of "back-button" to "back-explore-button"
+
+In results and saved views:
+Change div class to "list-recipe-div"
+Change class of "search-image" to "list-image"
+Change class of "search-dish" to "list-dish"

@@ -74,7 +74,7 @@ async function showResults(ingredient) {
   // Make the try/catch part
   try {
     
-    // If invoking showResults from within the renderRecipe function, the "recipe-main" id will need to be removed from main
+    // If invoking showResults from within the renderRecipe function, the "recipe-view" id will need to be removed from main
     main.removeAttribute("id");
 
     // Invoke the removeMain() function to clear any existing search results and recipe
@@ -151,7 +151,7 @@ async function renderRecipe(id, ingredient) {
     let recipe = response.data.meals[0]
 
     // Assign id to main to allow recipe formatting
-    main.id = "recipe-main"
+    main.id = "recipe-view"
 
     // Create recipe name element and append to main
     let name = document.createElement("p")

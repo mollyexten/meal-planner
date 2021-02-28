@@ -249,7 +249,7 @@ main {
     padding: 5px;
   }
 
-  #recipe-main {
+  #recipe-view {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
