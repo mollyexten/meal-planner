@@ -193,17 +193,17 @@ async function renderRecipe(id, ingredient) {
     recipeButtonDiv.className = "recipe-button-div"
     main.prepend(recipeButtonDiv)
 
-    // Append back button
-    const back = document.createElement("button")
-    back.id = "back-explore-button"
+    // Append back/explore button
+    const backExplore = document.createElement("button")
+    backExplore.id = "back-explore-button"
     let randomFlag = window.localStorage.getItem("randomRecipe")
     if (favoriteRecipes.includes(id) || randomFlag === id) {  
-      back.textContent = "Explore more"
+      backExplore.textContent = "Explore more"
     } else {
-      back.textContent = "Back to results"
+      backExplore.textContent = "Back to results"
     }
-    recipeButtonDiv.append(back)
-    back.addEventListener("click", function () {
+    recipeButtonDiv.append(backExplore)
+    backExplore.addEventListener("click", function () {
       showResults(ingredient)
     })
 
