@@ -8,9 +8,9 @@ const searchIngredients = []
 loadHome()
 
 // Event listeners for nav bar icons and header
-const home = document.querySelector("#home-button")
+const home = document.querySelector("#nav-home")
 home.addEventListener("click", loadHome)
-const saved = document.querySelector("#saved-button")
+const saved = document.querySelector("#nav-save")
 saved.addEventListener("click", function () {
   viewRecipeBox(favoriteRecipes, searchIngredients)
 })
@@ -37,6 +37,7 @@ async function loadHome() {
     let randomImage = randomRecipe.strMealThumb
     let mainImage = document.createElement("img")
     mainImage.src = randomImage
+    mainImage.alt = "random photo of food"
     mainImage.id = randomRecipe.idMeal
     mainImage.className = "background-image"
     mainImage.addEventListener("click", (e) => {
@@ -112,6 +113,7 @@ async function showResults(ingredient) {
       
       // Create html elements for each image and dish with attributes
       let image = document.createElement("img")
+      image.alt = "recipe photo"
       image.src = recipe.strMealThumb
       image.width = "250"
       image.className = "search-image"
@@ -162,6 +164,7 @@ async function renderRecipe(id, ingredient) {
     const recipeDiv = document.createElement("div")
     recipeDiv.className = "recipe-div"
     let image = document.createElement("img")
+    image.alt = "photo of recipe"
     image.src = recipe.strMealThumb
     image.className = "recipe-image"
     main.append(recipeDiv)
@@ -303,6 +306,7 @@ async function viewRecipeBox(recipes, ingredients) {
       main.append(mealDiv)
 
       let image = document.createElement("img")
+      image.alt = "photo of saved recipe"
       image.src = recipe.strMealThumb
       image.width = "250"
       image.className = "search-image"
