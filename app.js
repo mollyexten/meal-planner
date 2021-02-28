@@ -116,7 +116,7 @@ async function showResults(ingredient) {
       image.alt = "recipe photo"
       image.src = recipe.strMealThumb
       image.width = "250"
-      image.className = "search-image"
+      image.className = "list-image"
       image.id = recipe.idMeal
       let dish = document.createElement("p")
       dish.textContent = recipe.strMeal
@@ -309,7 +309,7 @@ async function viewRecipeBox(recipes, ingredients) {
       image.alt = "photo of saved recipe"
       image.src = recipe.strMealThumb
       image.width = "250"
-      image.className = "search-image"
+      image.className = "list-image"
       image.id = recipe.idMeal
       listRecipeDiv.append(image)
 
