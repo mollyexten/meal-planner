@@ -71,10 +71,10 @@ Here is a link for [Honey Teriyaki Salmon](https://www.themealdb.com/api/json/v1
 ```
 ## Wireframes
 
-[Meal Planner Search](https://wireframe.cc/pro/pp/64297a170417181)<br />
+This is what the search results will look like<br />
 ![List View](./list-view.png)<br />
-[Meal Planner Recipe](https://wireframe.cc/pro/pp/e0d6f63c3417182)<br />
-Both wireframes are also included as PDFs in this GitHub repo.
+This is what the recipe view will look like<br />
+![Recipe View](./recipe-view.png)<br />
 
 ### MVP/PostMVP
 
