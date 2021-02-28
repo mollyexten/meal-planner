@@ -107,9 +107,9 @@ async function showResults(ingredient) {
     recipes.forEach((recipe) => {
       
       // Create a container for each image and dish
-      const mealDiv = document.createElement("div")
-      mealDiv.className = "meal-div"
-      main.append(mealDiv)
+      const listRecipeDiv = document.createElement("div")
+      listRecipeDiv.className = "list-recipe-div"
+      main.append(listRecipeDiv)
       
       // Create html elements for each image and dish with attributes
       let image = document.createElement("img")
@@ -122,13 +122,13 @@ async function showResults(ingredient) {
       dish.textContent = recipe.strMeal
       dish.className = "search-dish"
       dish.id = recipe.idMeal
-      mealDiv.addEventListener("click", (e) => {
+      listRecipeDiv.addEventListener("click", (e) => {
         renderRecipe(e.target.id, ingredient)
       })
       
       // Create a container for image and dish, append to DOM
-      mealDiv.append(image)
-      mealDiv.append(dish)
+      listRecipeDiv.append(image)
+      listRecipeDiv.append(dish)
     })
     appendFooter()
     return response
@@ -301,9 +301,9 @@ async function viewRecipeBox(recipes, ingredients) {
       let recipe = response.data.meals[0]
       
       // Create a div for each recipe and store image and name
-      const mealDiv = document.createElement("div")
-      mealDiv.className = "meal-div"
-      main.append(mealDiv)
+      const listRecipeDiv = document.createElement("div")
+      listRecipeDiv.className = "list-recipe-div"
+      main.append(listRecipeDiv)
 
       let image = document.createElement("img")
       image.alt = "photo of saved recipe"
@@ -311,14 +311,14 @@ async function viewRecipeBox(recipes, ingredients) {
       image.width = "250"
       image.className = "search-image"
       image.id = recipe.idMeal
-      mealDiv.append(image)
+      listRecipeDiv.append(image)
 
       let dish = document.createElement("p")
       dish.textContent = recipe.strMeal
       dish.className = "search-dish"
       dish.id = recipe.idMeal
-      mealDiv.append(dish)
-      mealDiv.addEventListener("click", (e) => {
+      listRecipeDiv.append(dish)
+      listRecipeDiv.addEventListener("click", (e) => {
         renderRecipe(e.target.id, ingredients[i])
       })
       

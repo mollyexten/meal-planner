@@ -126,7 +126,7 @@ main {
   align-items: center;
 }
 
-.meal-div {
+.list-recipe-div {
   display: flex;
   flex-flow: column wrap;
 }
@@ -238,13 +238,13 @@ main {
   }
   
   main {
-    /* Line up meal-div items horizontally, wrapping to next line */
+    /* Line up list-recipe-div items horizontally, wrapping to next line */
     flex-flow: row wrap;
-    /* Keep meal-div items lined up by photo */
+    /* Keep list-recipe-div items lined up by photo */
     align-items: flex-start;
   }
 
-  .meal-div {
+  .list-recipe-div {
     margin-bottom: 40px;
     padding: 5px;
   }
