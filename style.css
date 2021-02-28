@@ -163,7 +163,7 @@ main {
   justify-content: space-evenly;
 }
 
-#back-button, .save-button, .already-saved-button {
+#back-explore-button, .save-button, .already-saved-button {
   padding: 5px;
   font-weight: 100;
   font-size: 16px;
@@ -171,7 +171,7 @@ main {
   border: 1px solid #eb5e28;
 }
 
-#back-button, .save-button {
+#back-explore-button, .save-button {
   background-color: #fffcf2;
   color: #403d39;
 }

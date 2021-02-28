@@ -195,7 +195,7 @@ async function renderRecipe(id, ingredient) {
 
     // Append back button
     const back = document.createElement("button")
-    back.id = "back-button"
+    back.id = "back-explore-button"
     let randomFlag = window.localStorage.getItem("randomRecipe")
     if (favoriteRecipes.includes(id) || randomFlag === id) {  
       back.textContent = "Explore more"
