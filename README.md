@@ -140,7 +140,8 @@ This is what the recipe view will look like<br />
 | Organize final CSS | H | 1 hr | 2 hrs |  |
 | *ADDED* Cleaning up code | H | 1.5 hrs | 3 hrs |  |
 | *ADDED* Display number of search results | H | 1.5 hrs | 1 hr |  |
-| Total | H | 43 hrs| 37 hrs |  |
+| *ADDED* Add option to explore recipes within category | H | 2 hrs | 2 hrs |  |
+| Total | H | 43 hrs| 39 hrs |  |
 
 ## Code Snippet
 

@@ -89,7 +89,7 @@ async function showResults(ingredient) {
     // Catch recipes that have a null value and indicate that it yielded no results
     if (recipes === null) {
       let noRecipes = document.createElement("p")
-      noRecipes.textContent = "No recipes found"
+      noRecipes.textContent = `No recipes found for "${ingredient}"`
       main.append(noRecipes)
       return
     }
@@ -97,7 +97,7 @@ async function showResults(ingredient) {
     // Report the number of results found
     if (recipes.length > 0) {
       recipeCount = document.createElement("p")
-      recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found` : recipeCount.textContent = `${recipes.length} recipe found`
+      recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found for "${ingredient}"` : recipeCount.textContent = `${recipes.length} recipe found for "${ingredient}"`
       recipeCount.style.width = "100%"
       recipeCount.style.textAlign = "center"
       main.append(recipeCount)
