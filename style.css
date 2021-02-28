@@ -131,7 +131,7 @@ main {
   flex-flow: column wrap;
 }
 
-.search-dish {
+.list-name {
   padding: 5px;
   width: 250px;
   margin-top: 0;
@@ -139,7 +139,7 @@ main {
   cursor: pointer;
 }
 
-.search-dish:hover {
+.list-name:hover {
   text-decoration: underline;
 }
 

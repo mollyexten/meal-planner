@@ -120,7 +120,7 @@ async function showResults(ingredient) {
       image.id = recipe.idMeal
       let dish = document.createElement("p")
       dish.textContent = recipe.strMeal
-      dish.className = "search-dish"
+      dish.className = "list-name"
       dish.id = recipe.idMeal
       listRecipeDiv.addEventListener("click", (e) => {
         renderRecipe(e.target.id, ingredient)
@@ -315,7 +315,7 @@ async function viewRecipeBox(recipes, ingredients) {
 
       let dish = document.createElement("p")
       dish.textContent = recipe.strMeal
-      dish.className = "search-dish"
+      dish.className = "list-name"
       dish.id = recipe.idMeal
       listRecipeDiv.append(dish)
       listRecipeDiv.addEventListener("click", (e) => {
