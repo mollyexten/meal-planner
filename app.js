@@ -197,15 +197,22 @@ async function renderRecipe(id, ingredient) {
     const backExplore = document.createElement("button")
     backExplore.id = "back-explore-button"
     let randomFlag = window.localStorage.getItem("randomRecipe")
-    if (favoriteRecipes.includes(id) || randomFlag === id) {  
+    let exploreFlag = window.localStorage.getItem("exploreRecipe")
+    if (favoriteRecipes.includes(id) || randomFlag === id || exploreFlag === id) {  
       backExplore.textContent = "Explore more"
+      backExplore.addEventListener("click", function () {
+        exploreMore(recipe.strCategory)
+      })
     } else {
       backExplore.textContent = "Back to results"
+      backExplore.addEventListener("click", function () {
+        showResults(ingredient)
+      })
     }
     recipeButtonDiv.append(backExplore)
-    backExplore.addEventListener("click", function () {
-      showResults(ingredient)
-    })
+    // backExplore.addEventListener("click", function () {
+    //   showResults(ingredient)
+    // })
 
     // Append the save button to the recipeButtonDiv
     const save = document.createElement("button")
@@ -283,6 +290,70 @@ function saveRecipe(id, searchIngredient) {
     searchIngredients.push(searchIngredient)
     viewRecipeBox(favoriteRecipes, searchIngredients)
   }
+}
+
+async function exploreMore(category) {
+  removeMain()
+  main.removeAttribute("id")
+  let recipeCategory = document.createElement("p")
+  recipeCategory.textContent = `Here are some other ${category.toLowerCase()} recipes`
+  recipeCategory.style.width = "100%"
+  recipeCategory.style.textAlign = "center"
+  main.append(recipeCategory)
+
+  const exploreURL = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+
+  try {
+    let response = await axios.get(exploreURL)
+    let recipeList = response.data.meals
+    shuffle(recipeList)
+    let recipes = recipeList.slice(0, 12)
+    recipes.forEach((recipe) => {
+      const listRecipeDiv = document.createElement("div")
+      listRecipeDiv.className = "list-recipe-div"
+      main.append(listRecipeDiv)
+    
+    // Create html elements for each image and dish with attributes
+      let image = document.createElement("img")
+      image.alt = "recipe photo"
+      image.src = recipe.strMealThumb
+      image.width = "250"
+      image.className = "list-image"
+      image.id = recipe.idMeal
+      let dish = document.createElement("p")
+      dish.textContent = recipe.strMeal
+      dish.className = "list-name"
+      dish.id = recipe.idMeal
+      ingredient = recipe.strIngredient1
+      listRecipeDiv.addEventListener("click", (e) => {
+        renderRecipe(e.target.id, ingredient)
+        window.localStorage.setItem("exploreRecipe", e.target.id)
+      })
+    
+    // Create a container for image and dish, append to DOM
+    listRecipeDiv.append(image)
+    listRecipeDiv.append(dish)
+  })
+  appendFooter()
+    return response
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+function shuffle(recipes) {
+  let shuffledRecipes = recipes
+  let currentIndex = recipes.length
+  let temporaryValue
+  let randomIndex
+  while (currentIndex > 0) {
+    randomIndex = Math.round(Math.random() * currentIndex)
+    currentIndex--
+    temporaryValue = shuffledRecipes[currentIndex]
+    shuffledRecipes[currentIndex] = shuffledRecipes[randomIndex]
+    shuffledRecipes[randomIndex] = temporaryValue
+  }
+  return shuffledRecipes;
 }
 
 async function viewRecipeBox(recipes, ingredients) {

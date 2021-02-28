@@ -122,29 +122,29 @@ This is what the recipe view will look like<br />
 | Append specific recipe info to page via DOM | H | 2 hrs | 3 hrs | 3 hrs |
 | Click event load specific recipe | H | 2 hrs | 2 hrs | 2 hrs |
 | Format photos appended to DOM | H | 1 hr | 1 hr |  |
-| Flexbox for index page | H | 2 hrs | 1.5 hrs |  |
-| Flexbox for search results | H | 3 hrs | 1 hr |  |
+| Flexbox for index page | H | 2 hrs | 2 hrs |  |
+| Flexbox for search results | H | 3 hrs | 1.5 hrs |  |
 | Flexbox for individual recipes | H | 2 hrs | 1 hr |  |
-| CSS color and font styling | H | 1 hr | 1.5 hrs |  |
+| CSS color and font styling | H | 1 hr | 2 hrs |  |
 | Add icons to buttons | H | 1.5 hrs | 1 hr |  |
 | *ADDED* Stylize the "no results" option | H | 1 hr | .5 hrs |  |
 | *ADDED* Make click events more noticeable with styling | H | 1.5 hrs | .5 hrs |  |
 | Media query for desktop - index | H | 2 hrs | 2 hrs |  |
 | Media query for desktop - search | H | 2 hrs | 2.5 hrs |  |
-| Media query for desktop - recipe | H | 2 hrs | 2 hr |  |
+| Media query for desktop - recipe | H | 2 hrs | 2.5 hrs |  |
 | Create a "save recipes" function | H | 3hrs| 3 hrs |  |
 | Display saved recipes in recipe-box page | H | 2 hrs | 2 hrs |  |
 | ~~Compile saved recipes' ingredients to grocery list~~ | ~~H~~ | ~~3 hrs~~ |  |  |
 | ~~Add amounts to grocery list~~ | ~~H~~ | ~~3 hrs~~ |  |  |
-| *ADDED* Stylize the heading - maybe an icon? | H | 1.5 hrs | 1 hrs |  |
-| Organize final CSS | H | 1 hr | 1 hr |  |
-| *ADDED* Cleaning up code | H | 1.5 hrs | 2.5 hrs |  |
+| *ADDED* Stylize the heading - maybe an icon? | H | 1.5 hrs | 1.5 hrs |  |
+| Organize final CSS | H | 1 hr | 2 hrs |  |
+| *ADDED* Cleaning up code | H | 1.5 hrs | 3 hrs |  |
 | *ADDED* Display number of search results | H | 1.5 hrs | 1 hr |  |
-| Total | H | 43 hrs| 33 hrs |  |
+| Total | H | 43 hrs| 37 hrs |  |
 
 ## Code Snippet
 
-For this assignment, I had to figure out how to match up the ingredients with their amounts and append all of it to a table. I used a for... in loop to do it:
+For this assignment, I had to figure out how to match up the ingredients with their amounts and append all of it to a table. All of this information was stored in an object as key/value pairs. I used a for... in loop to find the ingredients and amounts, append them to their respective arrays, and then align those two arrays into rows of a table that was appended to the DOM:
 
 ```
   for (let key in obj) {

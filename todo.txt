@@ -9,6 +9,6 @@ Change id of main "recipe-main" to "recipe-view"
 Change class of "back-button" to "back-explore-button"
 
 In results and saved views:
-Change div class to "list-recipe-div"
+Change div class "meal-div" to "list-recipe-div"
 Change class of "search-image" to "list-image"
-Change class of "search-dish" to "list-dish"
+Change class of "search-dish" to "list-name"
