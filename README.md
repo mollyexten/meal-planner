@@ -6,7 +6,7 @@
 
 ## Project Description
 
-The meal planner application enables a user to look up recipes based on the ingredients they have using the TheMealDB API. The search results will include links to the full recipes, with an ingredient list and directions.
+The meal planner application enables a user to look up recipes based on the ingredients they have using the TheMealDB API. The search results will include links to the full recipes, with an ingredient list and directions. Recipes can be saved and viewed in the "saved recipes" section.
 
 ## API and Data Sample
 
@@ -72,6 +72,7 @@ Here is a link for [Honey Teriyaki Salmon](https://www.themealdb.com/api/json/v1
 ## Wireframes
 
 [Meal Planner Search](https://wireframe.cc/pro/pp/64297a170417181)<br />
+![List View](./list-view.png)<br />
 [Meal Planner Recipe](https://wireframe.cc/pro/pp/e0d6f63c3417182)<br />
 Both wireframes are also included as PDFs in this GitHub repo.
 
