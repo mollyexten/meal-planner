@@ -108,8 +108,7 @@ This is what the recipe view will look like<br />
 
 ## Priority Matrix
 
-[View here](https://lucid.app/lucidchart/invitations/accept/63606aaf-2d9b-44a4-9998-4dac62063c38)<br />
-The priority matrix can also be viewed as a PDF in this GitHub repo.
+![Priority Grid](./priority-grid.jpeg)
 
 ## Timeframes
 
