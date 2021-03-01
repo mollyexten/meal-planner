@@ -2,7 +2,7 @@
 
 ## Meal Planner
 
-[Your deployed site] ("url in strings")
+[Meal Planner]("https://mollyexten.github.io/meal-planner/")
 
 ## Project Description
 
