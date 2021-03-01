@@ -2,7 +2,7 @@
 
 ## Meal Planner
 
-[Meal Planner]("https://mollyexten.github.io/meal-planner/")
+[Meal Planner](https://mollyexten.github.io/meal-planner/)
 
 ## Project Description
 
