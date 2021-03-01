@@ -1,6 +1,8 @@
 Post-MVP Ideas:
 1. Add option to remove saved recipes
+2. Add button to clear all saved recipes
 2. Improve footer - gray, stays at the bottom, not appended within main but not overlapping with image in desktop view
 3. Consider making ingredient parameter optional
 4. Add a back-to-recipe button from explore
+5. Remove "randomRecipe" and "exploreRecipe" items from local storage if clicked on from a search result
 

@@ -18,6 +18,11 @@ body {
   font-size: 20px;
 }
 
+button {
+  outline: none;
+  cursor: pointer;
+}
+
 /* ==========================================================================
    Nav Styles
 ========================================================================== */
@@ -88,11 +93,6 @@ header {
   border: none;
   margin-left: 5px;
   padding-top: 5px;
-}
-
-button {
-  outline: none;
-  cursor: pointer;
 }
 
 /* This reference helped me figure out how to change the color of the icon: https://stackoverflow.com/questions/12272372/how-to-style-icon-color-size-and-shadow-of-font-awesome-icons */

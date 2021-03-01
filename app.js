@@ -210,9 +210,6 @@ async function renderRecipe(id, ingredient) {
       })
     }
     recipeButtonDiv.append(backExplore)
-    // backExplore.addEventListener("click", function () {
-    //   showResults(ingredient)
-    // })
 
     // Append the save button to the recipeButtonDiv
     const save = document.createElement("button")
@@ -341,11 +338,14 @@ async function exploreMore(category) {
   }
 }
 
+// Shuffle recipes so that the same recipes don't appear every time the exploreMore function is invoked
 function shuffle(recipes) {
   let shuffledRecipes = recipes
   let currentIndex = recipes.length
   let temporaryValue
   let randomIndex
+  
+  // Move down the array of recipes, swapping the current index with a random index until the current index reaches 0
   while (currentIndex > 0) {
     randomIndex = Math.round(Math.random() * currentIndex)
     currentIndex--
