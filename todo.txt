@@ -1,9 +1,0 @@
-Post-MVP Ideas:
-1. Add option to remove saved recipes
-2. Add button to clear all saved recipes
-3. Improve footer - gray, stays at the bottom, not appended within main but not overlapping with image in desktop view 
-    (I think the layout problem has something to do with the way the home image is loading into the flexbox, but I'm not sure)
-4. Make ingredient parameter optional - default of "NULL" for recipes redirected from "saved", "home", or "explore"
-5. Add a back-to-recipe button from explore
-6. Remove "randomRecipe" and "exploreRecipe" items from local storage if clicked on from a search result
-
