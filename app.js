@@ -75,7 +75,7 @@ function appendFooter() {
 }
 
 // Display search results based on ingredient
-const showResults = async (ingredient) => {
+async function showResults(ingredient) {
 
   // Store the URL that accesses the API in a variable
   const ingredientURL = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`
@@ -186,7 +186,7 @@ const showResults = async (ingredient) => {
 }
 
 // Display the photo, ingredients, and instructions for a specific recipe
-const renderRecipe = async (id, ingredient) => {
+async function renderRecipe(id, ingredient) {
   removeMain()
   
   // Store the URL that accesses the API in a variable
@@ -293,7 +293,7 @@ const renderRecipe = async (id, ingredient) => {
   }
 }
 
-const listIngredients = (obj) => {
+function listIngredients(obj) {
   
   // Create elements for ingredients table and append after image
   recipeDiv = document.querySelector(".recipe-div")
@@ -337,7 +337,7 @@ const listIngredients = (obj) => {
 }
 
 // Keep track of saved recipes
-const saveRecipe = (id, searchIngredient) => {
+function saveRecipe(id, searchIngredient) {
   // Check for duplicate recipes
   if (favoriteRecipes.includes(id)) {
     viewRecipeBox(favoriteRecipes, searchIngredients)
@@ -349,7 +349,7 @@ const saveRecipe = (id, searchIngredient) => {
   }
 }
 
-const exploreMore = async (category) => {
+async function exploreMore(category) {
   removeMain()
   main.removeAttribute("id")
   let recipeCategory = document.createElement("p")
@@ -399,7 +399,7 @@ const exploreMore = async (category) => {
 }
 
 // Shuffle recipes so that the same recipes don't appear every time the exploreMore function is invoked
-const shuffle = (recipes) => {
+function shuffle(recipes) {
   let shuffledRecipes = recipes
   let currentIndex = recipes.length
   let temporaryValue
@@ -416,7 +416,7 @@ const shuffle = (recipes) => {
   return shuffledRecipes;
 }
 
-const viewRecipeBox = async (recipes, ingredients) => {
+async function viewRecipeBox (recipes, ingredients) {
   removeMain()
   main.removeAttribute("id");
 
