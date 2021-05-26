@@ -1,3 +1,7 @@
+import { Hello, createMainImage } from "./modules/domHelpers.js"
+
+Hello()
+
 // Global variables
 const main = document.querySelector("main")
 // Arrays for storing saved recipe information from local storage
@@ -27,6 +31,7 @@ form.addEventListener("submit", (e) => {
 })
 
 // Load a random recipe image in the "home page"
+// async function loadHome() {
 async function loadHome() {
   removeMain()
   main.removeAttribute("id")
@@ -34,12 +39,15 @@ async function loadHome() {
   try {
     let response = await axios.get(randomURL)
     let randomRecipe = response.data.meals[0]
-    let randomImage = randomRecipe.strMealThumb
-    let mainImage = document.createElement("img")
-    mainImage.src = randomImage
-    mainImage.alt = "random photo of food"
-    mainImage.id = randomRecipe.idMeal
-    mainImage.className = "background-image"
+    // let randomImage = randomRecipe.strMealThumb
+    // DOM MANIPULATION METHOD - CREATEHOMEPIC
+    let mainImage = createMainImage(randomRecipe)
+    // let mainImage = document.createElement("img")
+    // mainImage.src = randomImage
+    // mainImage.alt = "random photo of food"
+    // mainImage.id = randomRecipe.idMeal
+    // mainImage.className = "background-image"
+
     mainImage.addEventListener("click", (e) => {
       renderRecipe(e.target.id, randomRecipe.strIngredient1)
       window.localStorage.setItem("randomRecipe", e.target.id)
@@ -60,6 +68,7 @@ function removeMain() {
 }
 
 // Add a footer citing the API
+// THIS COULD BE A DOM HELPER
 function appendFooter() {
   let footer = `<footer>Recipes sourced from <a href="https://www.themealdb.com">TheMealDB</a> (API)</footer>`
   return main.insertAdjacentHTML("beforeend", footer)
@@ -88,6 +97,13 @@ async function showResults(ingredient) {
 
     // Catch recipes that have a null value and indicate that it yielded no results
     if (recipes === null) {
+      /* function indicateNoRecipes() {
+            let noRecipes = document.createElement("p")
+      noRecipes.textContent = `No recipes found for "${ingredient}"`
+      main.append(noRecipes)
+      return
+      } 
+      indicateNoRecipes()*/
       let noRecipes = document.createElement("p")
       noRecipes.textContent = `No recipes found for "${ingredient}"`
       main.append(noRecipes)
@@ -96,6 +112,15 @@ async function showResults(ingredient) {
 
     // Report the number of results found
     if (recipes.length > 0) {
+      /*
+      function countRecipes(recipes.length) {
+            recipeCount = document.createElement("p")
+      recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found for "${ingredient}"` : recipeCount.textContent = `${recipes.length} recipe found for "${ingredient}"`
+      recipeCount.style.width = "100%"
+      recipeCount.style.textAlign = "center"
+      main.append(recipeCount)
+      }
+      */
       recipeCount = document.createElement("p")
       recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found for "${ingredient}"` : recipeCount.textContent = `${recipes.length} recipe found for "${ingredient}"`
       recipeCount.style.width = "100%"
@@ -107,11 +132,34 @@ async function showResults(ingredient) {
     recipes.forEach((recipe) => {
       
       // Create a container for each image and dish
+      /*
+      function createListDiv() {
+            const listRecipeDiv = document.createElement("div")
+      listRecipeDiv.className = "list-recipe-div"
+      main.append(listRecipeDiv)
+      }
+      */
       const listRecipeDiv = document.createElement("div")
       listRecipeDiv.className = "list-recipe-div"
       main.append(listRecipeDiv)
       
       // Create html elements for each image and dish with attributes
+      /*
+      function createListImage() {
+            let image = document.createElement("img")
+      image.alt = "recipe photo"
+      image.src = recipe.strMealThumb
+      image.width = "250"
+      image.className = "list-image"
+      image.id = recipe.idMeal
+      }
+      function createListDish() {
+            let dish = document.createElement("p")
+      dish.textContent = recipe.strMeal
+      dish.className = "list-name"
+      dish.id = recipe.idMeal
+      }
+      */
       let image = document.createElement("img")
       image.alt = "recipe photo"
       image.src = recipe.strMealThumb
@@ -154,6 +202,9 @@ async function renderRecipe(id, ingredient) {
     main.id = "recipe-view"
 
     // Create recipe name element and append to main
+    /*
+    function createRecipeTitle
+    */
     let name = document.createElement("p")
     name.textContent = recipe.strMeal
     name.className = "recipe-headers"
@@ -161,6 +212,9 @@ async function renderRecipe(id, ingredient) {
     main.append(name)
 
     // Create a div to store image and ingredients
+    /*
+    function createRecipeDiv
+    */
     const recipeDiv = document.createElement("div")
     recipeDiv.className = "recipe-div"
     let image = document.createElement("img")
@@ -174,6 +228,9 @@ async function renderRecipe(id, ingredient) {
     listIngredients(recipe)
 
     // Create a div for the instructions
+    /*
+    function listInstructions()
+    */
     const instructionsDiv = document.createElement("div")
     instructionsDiv.className = "instructions-div"
     main.append(instructionsDiv)
@@ -189,6 +246,9 @@ async function renderRecipe(id, ingredient) {
     instructionsDiv.append(instructions)
     
     // Create a recipe button div and prepend to the main part
+    /*
+    function showRecipeButtons()
+     */
     const recipeButtonDiv = document.createElement("div")
     recipeButtonDiv.className = "recipe-button-div"
     main.prepend(recipeButtonDiv)
@@ -356,7 +416,7 @@ function shuffle(recipes) {
   return shuffledRecipes;
 }
 
-async function viewRecipeBox(recipes, ingredients) {
+async function viewRecipeBox (recipes, ingredients) {
   removeMain()
   main.removeAttribute("id");
 
