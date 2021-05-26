@@ -1,3 +1,5 @@
+import { createMainImage } from "./modules/domHelpers.js"
+
 // Global variables
 const main = document.querySelector("main")
 // Arrays for storing saved recipe information from local storage
