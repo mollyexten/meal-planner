@@ -34,12 +34,13 @@ async function loadHome() {
   try {
     let response = await axios.get(randomURL)
     let randomRecipe = response.data.meals[0]
-    let randomImage = randomRecipe.strMealThumb
-    let mainImage = document.createElement("img")
-    mainImage.src = randomImage
-    mainImage.alt = "random photo of food"
-    mainImage.id = randomRecipe.idMeal
-    mainImage.className = "background-image"
+    let mainImage = createMainImage(randomRecipe)
+    // let randomImage = randomRecipe.strMealThumb
+    // let mainImage = document.createElement("img")
+    // mainImage.src = randomImage
+    // mainImage.alt = "random photo of food"
+    // mainImage.id = randomRecipe.idMeal
+    // mainImage.className = "background-image"
     mainImage.addEventListener("click", (e) => {
       renderRecipe(e.target.id, randomRecipe.strIngredient1)
       window.localStorage.setItem("randomRecipe", e.target.id)
