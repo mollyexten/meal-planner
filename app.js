@@ -1,4 +1,4 @@
-import { createMainImage } from "./modules/domHelpers.js"
+const createMainImage = require('./modules/domHelpers.js')
 
 // Global variables
 const main = document.querySelector("main")
