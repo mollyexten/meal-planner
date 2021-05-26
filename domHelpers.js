@@ -1,4 +1,4 @@
-export default function createMainImage(recipe) {
+function createMainImage(recipe) {
   let mainImage = document.createElement("img")
   mainImage.src = recipe.strMealThumb
   mainImage.alt = "random photo of food"
