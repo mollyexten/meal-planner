@@ -1,4 +1,4 @@
-import { Hello } from "./modules/domHelpers.js"
+import { Hello, createMainImage } from "./modules/domHelpers.js"
 
 Hello()
 
@@ -39,22 +39,14 @@ async function loadHome() {
   try {
     let response = await axios.get(randomURL)
     let randomRecipe = response.data.meals[0]
-    let randomImage = randomRecipe.strMealThumb
+    // let randomImage = randomRecipe.strMealThumb
     // DOM MANIPULATION METHOD - CREATEHOMEPIC
-    /* function createMainImage() {
-        let mainImage = document.createElement("img")
-    mainImage.src = randomImage
-    mainImage.alt = "random photo of food"
-    mainImage.id = randomRecipe.idMeal
-    mainImage.className = "background-image"
-    } 
-    let mainImage = createMainImage()
-    */
-    let mainImage = document.createElement("img")
-    mainImage.src = randomImage
-    mainImage.alt = "random photo of food"
-    mainImage.id = randomRecipe.idMeal
-    mainImage.className = "background-image"
+    let mainImage = createMainImage(randomRecipe)
+    // let mainImage = document.createElement("img")
+    // mainImage.src = randomImage
+    // mainImage.alt = "random photo of food"
+    // mainImage.id = randomRecipe.idMeal
+    // mainImage.className = "background-image"
 
     mainImage.addEventListener("click", (e) => {
       renderRecipe(e.target.id, randomRecipe.strIngredient1)
