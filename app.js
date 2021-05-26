@@ -1,4 +1,4 @@
-const createMainImage = require('./modules/domHelpers.js')
+const createMainImage = require('./domHelpers.js')
 
 // Global variables
 const main = document.querySelector("main")
