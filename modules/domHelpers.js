@@ -1,5 +1,5 @@
 export function Hello() {
-  console.log("Hello buddy!")
+  console.log("Hello buddo!")
 }
 
 export function createMainImage(img) {
