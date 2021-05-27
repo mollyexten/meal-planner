@@ -23,6 +23,7 @@ body {
   display: flex;
   flex-flow: column wrap;
   font-size: 20px;
+  width: 100vw;
 }
 
 button {
@@ -35,8 +36,8 @@ button {
 ========================================================================== */
 
 nav {
-  padding-top: 5px;
-  padding-right: 5px;
+  padding-top: 0.5em;
+  padding-right: 1em;
   background-color: var(--warm-red);
   display: flex;
   justify-content: flex-end;
