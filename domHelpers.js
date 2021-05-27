@@ -54,3 +54,17 @@ function createRecipeImage(recipe) {
   image.className = "recipe-image"
   return image
 }
+
+function createInstructionsHeader() {
+  const instructionsHeader = document.createElement("p")
+  instructionsHeader.textContent = "Instructions"
+  instructionsHeader.className = "recipe-headers"
+  return instructionsHeader
+}
+
+function createInstructions(recipe) {
+  const instructions = document.createElement("p")
+  instructions.textContent = recipe.strInstructions
+  instructions.className = "instructions"
+  return instructions
+}

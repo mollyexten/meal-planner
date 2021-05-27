@@ -180,12 +180,14 @@ async function renderRecipe(id, ingredient) {
     main.append(instructionsDiv)
 
     // Create instructions header and paragraph and append
-    let instructionsHeader = document.createElement("p")
-    instructionsHeader.textContent = "Instructions"
-    instructionsHeader.className = "recipe-headers"
-    let instructions = document.createElement("p")
-    instructions.textContent = recipe.strInstructions
-    instructions.className = "instructions"
+    const instructionsHeader = createInstructionsHeader()
+    // let instructionsHeader = document.createElement("p")
+    // instructionsHeader.textContent = "Instructions"
+    // instructionsHeader.className = "recipe-headers"
+    const instructions = createInstructions(recipe)
+    // let instructions = document.createElement("p")
+    // instructions.textContent = recipe.strInstructions
+    // instructions.className = "instructions"
     instructionsDiv.append(instructionsHeader)
     instructionsDiv.append(instructions)
     
