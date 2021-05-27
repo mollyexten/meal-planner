@@ -34,7 +34,7 @@ async function loadHome() {
   try {
     let response = await axios.get(randomURL)
     let randomRecipe = response.data.meals[0]
-    let mainImage = createMainImage(randomRecipe)
+    const mainImage = createMainImage(randomRecipe)
     mainImage.addEventListener("click", (e) => {
       renderRecipe(e.target.id, randomRecipe.strIngredient1)
       window.localStorage.setItem("randomRecipe", e.target.id)
@@ -85,17 +85,18 @@ async function showResults(ingredient) {
     if (recipes === null) {
       // let noRecipes = document.createElement("p")
       // noRecipes.textContent = `No recipes found for "${ingredient}"`
-      let noRecipes = showNoRecipes(ingredient)
+      const noRecipes = showNoRecipes(ingredient)
       main.append(noRecipes)
       return
     }
 
     // Report the number of results found
     if (recipes.length > 0) {
-      recipeCount = document.createElement("p")
-      recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found for "${ingredient}"` : recipeCount.textContent = `${recipes.length} recipe found for "${ingredient}"`
-      recipeCount.style.width = "100%"
-      recipeCount.style.textAlign = "center"
+      const recipeCount = countRecipes(recipes, ingredient)
+      // recipeCount = document.createElement("p")
+      // recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found for "${ingredient}"` : recipeCount.textContent = `${recipes.length} recipe found for "${ingredient}"`
+      // recipeCount.style.width = "100%"
+      // recipeCount.style.textAlign = "center"
       main.append(recipeCount)
     }
 
