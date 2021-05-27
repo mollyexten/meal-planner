@@ -1,3 +1,17 @@
+// Remove all appended child elements in the main part
+function removeMain() {
+  while (main.lastChild) {
+    main.removeChild(main.lastChild)
+  }
+}
+
+// Add a footer citing the API
+function appendFooter() {
+  let footer = `<footer>Recipes sourced from <a href="https://www.themealdb.com">TheMealDB</a> (API)</footer>`
+  return main.insertAdjacentHTML("beforeend", footer)
+}
+
+// ==================================HOME PAGE====================================
 function createMainImage(recipe) {
   const mainImage = document.createElement("img")
   mainImage.src = recipe.strMealThumb
@@ -7,20 +21,12 @@ function createMainImage(recipe) {
   return mainImage
 }
 
-function showNoRecipes(ingredient) {
-  const noRecipes = document.createElement("p")
-  noRecipes.textContent = `No recipes found for "${ingredient}"`
-  return noRecipes
+function appendFooter() {
+  let footer = `<footer>Recipes sourced from <a href="https://www.themealdb.com">TheMealDB</a> (API)</footer>`
+  return main.insertAdjacentHTML("beforeend", footer)
 }
 
-function countRecipes(recipes, ingredient) {
-  const recipeCount = document.createElement("p")
-  recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found for "${ingredient}"` : recipeCount.textContent = `${recipes.length} recipe found for "${ingredient}"`
-  recipeCount.style.width = "100%"
-  recipeCount.style.textAlign = "center"
-  return recipeCount;
-}
-
+// ====================================LIST VIEW====================================
 function createListImage(recipe) {
   const image = document.createElement("img")
   image.alt = "recipe photo"
@@ -39,6 +45,41 @@ function createListDish(recipe) {
   return dish
 }
 
+// =============================SEARCH PAGE====================================
+function showNoRecipes(ingredient) {
+  const noRecipes = document.createElement("p")
+  noRecipes.textContent = `No recipes found for "${ingredient}"`
+  return noRecipes
+}
+
+function countRecipes(recipes, ingredient) {
+  const recipeCount = document.createElement("p")
+  recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found for "${ingredient}"` : recipeCount.textContent = `${recipes.length} recipe found for "${ingredient}"`
+  recipeCount.style.width = "100%"
+  recipeCount.style.textAlign = "center"
+  return recipeCount;
+}
+
+// ==============================RECIPE PAGE====================================
+function createBackExplore() {
+  const backExplore = document.createElement("button")
+  backExplore.id = "back-explore-button"
+  return backExplore
+}
+
+function createSaveButton(favoriteRecipes, id) {
+  const save = document.createElement("button")
+  if (favoriteRecipes.includes(id)) {
+    save.textContent = "Recipe saved"
+    save.className = "already-saved-button"
+  } else {
+    save.textContent = "Save recipe"
+    save.className = "save-button"
+  }
+  save.id = id
+  return save
+}
+
 function createRecipeHeader(recipe) {
   const name = document.createElement("p")
   name.textContent = recipe.strMeal
@@ -55,6 +96,13 @@ function createRecipeImage(recipe) {
   return image
 }
 
+function createIngredientHeader() {
+  const ingredientHeader = document.createElement("p")
+  ingredientHeader.textContent = "Ingredients"
+  ingredientHeader.className = "recipe-headers"
+  return ingredientHeader
+}
+
 function createInstructionsHeader() {
   const instructionsHeader = document.createElement("p")
   instructionsHeader.textContent = "Instructions"
@@ -69,26 +117,7 @@ function createInstructions(recipe) {
   return instructions
 }
 
-function createSaveButton(favoriteRecipes, id) {
-  const save = document.createElement("button")
-  if (favoriteRecipes.includes(id)) {
-    save.textContent = "Recipe saved"
-    save.className = "already-saved-button"
-  } else {
-    save.textContent = "Save recipe"
-    save.className = "save-button"
-  }
-  save.id = id
-  return save
-}
-
-function createIngredientHeader() {
-  const ingredientHeader = document.createElement("p")
-  ingredientHeader.textContent = "Ingredients"
-  ingredientHeader.className = "recipe-headers"
-  return ingredientHeader
-}
-
+// =================================EXPLORE PAGE====================================
 function displayRecipeCategory(category) {
   const recipeCategory = document.createElement("p")
   recipeCategory.textContent = `Here are some other ${category.toLowerCase()} recipes`
@@ -97,6 +126,7 @@ function displayRecipeCategory(category) {
   return recipeCategory
 }
 
+// =================================RECIPE BOX====================================
 function createSavedHeader(recipes) {
   const savedRecipesHeader = document.createElement("p")
   recipes.length === 1 ? savedRecipesHeader.textContent = `${recipes.length} recipe saved` : savedRecipesHeader.textContent = `${recipes.length} recipes saved`
