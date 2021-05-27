@@ -1,23 +1,21 @@
+// ====================== RECIPE HELPER =========================================
 function listIngredients(obj) {
   // Create elements for ingredients table and append after image
-  recipeDiv = document.querySelector(".recipe-div")
-  ingredientsDiv = document.createElement("div")
+  const recipeDiv = document.querySelector(".recipe-div")
+  const ingredientsDiv = document.createElement("div")
   ingredientsDiv.className = "ingredients-div"
   recipeDiv.append(ingredientsDiv)
 
   const ingredientHeader = createIngredientHeader()
   ingredientsDiv.append(ingredientHeader)
-  
   ingredientTable = document.createElement("table")
   ingredientsDiv.append(ingredientTable)
   
-  // Set up arrays for measurements and ingredients to push into later
   let measurements = []
   let ingredients = []
   
-  // I used this resource to understand for...in loops: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
+  // Push into measurements and ingredients with a for...in loop
   for (let key in obj) {
-    // This reference showed me how to check if a string contains a substring: https://flaviocopes.com/how-to-string-contains-substring-javascript/
     if (key.includes("strMeasure") && (obj[key] != " " || obj[key] != "")) {
       measurements.push(obj[key])
     }
@@ -37,6 +35,7 @@ function listIngredients(obj) {
   }
 }
 
+// ================================= EXPLORE HELPER ================================
 function shuffle(recipes) {
   let shuffledRecipes = recipes
   let currentIndex = recipes.length

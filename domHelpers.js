@@ -61,6 +61,12 @@ function countRecipes(recipes, ingredient) {
 }
 
 // ==============================RECIPE PAGE====================================
+function createBackExplore() {
+  const backExplore = document.createElement("button")
+  backExplore.id = "back-explore-button"
+  return backExplore
+}
+
 function createSaveButton(favoriteRecipes, id) {
   const save = document.createElement("button")
   if (favoriteRecipes.includes(id)) {

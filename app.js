@@ -19,7 +19,7 @@ mainHeader.addEventListener("click", loadHome)
 const form = document.querySelector("form")
 form.addEventListener("submit", (e) => {
   e.preventDefault()
-  let searchValue = document.querySelector("#search-value").value
+  const searchValue = document.querySelector("#search-value").value
   // API call for search results
   showResults(searchValue)
   document.querySelector("#search-value").value = ""
@@ -102,6 +102,7 @@ async function renderRecipe(id, ingredient) {
     const recipe = response.data.meals[0]
     // Assign id to main to allow recipe formatting
     main.id = "recipe-view"
+
     const name = createRecipeHeader(recipe)
     main.append(name)
     const recipeDiv = document.createElement("div")
@@ -128,8 +129,7 @@ async function renderRecipe(id, ingredient) {
     main.prepend(recipeButtonDiv)
 
     // Append back/explore button
-    const backExplore = document.createElement("button")
-    backExplore.id = "back-explore-button"
+    const backExplore = createBackExplore()
     let randomFlag = window.localStorage.getItem("randomRecipe")
     let exploreFlag = window.localStorage.getItem("exploreRecipe")
     if (favoriteRecipes.includes(id) || randomFlag === id || exploreFlag === id) {  
