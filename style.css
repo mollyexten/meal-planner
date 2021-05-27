@@ -41,7 +41,6 @@ nav {
   background-color: var(--warm-red);
   display: flex;
   justify-content: flex-end;
-  border:  var(--warm-red) 1px solid;
 }
 
 .nav-icon {
