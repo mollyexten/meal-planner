@@ -1,5 +1,5 @@
 function createMainImage(recipe) {
-  let mainImage = document.createElement("img")
+  const mainImage = document.createElement("img")
   mainImage.src = recipe.strMealThumb
   mainImage.alt = "random photo of food"
   mainImage.id = recipe.idMeal
@@ -8,7 +8,7 @@ function createMainImage(recipe) {
 }
 
 function showNoRecipes(ingredient) {
-  let noRecipes = document.createElement("p")
+  const noRecipes = document.createElement("p")
   noRecipes.textContent = `No recipes found for "${ingredient}"`
   return noRecipes
 }
