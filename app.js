@@ -109,16 +109,18 @@ async function showResults(ingredient) {
       main.append(listRecipeDiv)
       
       // Create html elements for each image and dish with attributes
-      let image = document.createElement("img")
-      image.alt = "recipe photo"
-      image.src = recipe.strMealThumb
-      image.width = "250"
-      image.className = "list-image"
-      image.id = recipe.idMeal
-      let dish = document.createElement("p")
-      dish.textContent = recipe.strMeal
-      dish.className = "list-name"
-      dish.id = recipe.idMeal
+      const image = createListImage(recipe)
+      // let image = document.createElement("img")
+      // image.alt = "recipe photo"
+      // image.src = recipe.strMealThumb
+      // image.width = "250"
+      // image.className = "list-image"
+      // image.id = recipe.idMeal
+      const dish = createListDish(recipe)
+      // let dish = document.createElement("p")
+      // dish.textContent = recipe.strMeal
+      // dish.className = "list-name"
+      // dish.id = recipe.idMeal
       listRecipeDiv.addEventListener("click", (e) => {
         renderRecipe(e.target.id, ingredient)
       })
