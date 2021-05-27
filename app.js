@@ -83,8 +83,6 @@ async function showResults(ingredient) {
 
     // Catch recipes that have a null value and indicate that it yielded no results
     if (recipes === null) {
-      // let noRecipes = document.createElement("p")
-      // noRecipes.textContent = `No recipes found for "${ingredient}"`
       const noRecipes = showNoRecipes(ingredient)
       main.append(noRecipes)
       return
@@ -93,10 +91,6 @@ async function showResults(ingredient) {
     // Report the number of results found
     if (recipes.length > 0) {
       const recipeCount = countRecipes(recipes, ingredient)
-      // recipeCount = document.createElement("p")
-      // recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found for "${ingredient}"` : recipeCount.textContent = `${recipes.length} recipe found for "${ingredient}"`
-      // recipeCount.style.width = "100%"
-      // recipeCount.style.textAlign = "center"
       main.append(recipeCount)
     }
 
@@ -110,17 +104,7 @@ async function showResults(ingredient) {
       
       // Create html elements for each image and dish with attributes
       const image = createListImage(recipe)
-      // let image = document.createElement("img")
-      // image.alt = "recipe photo"
-      // image.src = recipe.strMealThumb
-      // image.width = "250"
-      // image.className = "list-image"
-      // image.id = recipe.idMeal
       const dish = createListDish(recipe)
-      // let dish = document.createElement("p")
-      // dish.textContent = recipe.strMeal
-      // dish.className = "list-name"
-      // dish.id = recipe.idMeal
       listRecipeDiv.addEventListener("click", (e) => {
         renderRecipe(e.target.id, ingredient)
       })
@@ -154,20 +138,12 @@ async function renderRecipe(id, ingredient) {
 
     // Create recipe name element and append to main
     const name = createRecipeHeader(recipe)
-    // let name = document.createElement("p")
-    // name.textContent = recipe.strMeal
-    // name.className = "recipe-headers"
-    // name.id = "recipe-name"
     main.append(name)
 
     // Create a div to store image and ingredients
     const recipeDiv = document.createElement("div")
     recipeDiv.className = "recipe-div"
     const image = createRecipeImage(recipe)
-    // let image = document.createElement("img")
-    // image.alt = "photo of recipe"
-    // image.src = recipe.strMealThumb
-    // image.className = "recipe-image"
     main.append(recipeDiv)
     recipeDiv.append(image)
 
@@ -181,13 +157,7 @@ async function renderRecipe(id, ingredient) {
 
     // Create instructions header and paragraph and append
     const instructionsHeader = createInstructionsHeader()
-    // let instructionsHeader = document.createElement("p")
-    // instructionsHeader.textContent = "Instructions"
-    // instructionsHeader.className = "recipe-headers"
     const instructions = createInstructions(recipe)
-    // let instructions = document.createElement("p")
-    // instructions.textContent = recipe.strInstructions
-    // instructions.className = "instructions"
     instructionsDiv.append(instructionsHeader)
     instructionsDiv.append(instructions)
     
@@ -213,20 +183,9 @@ async function renderRecipe(id, ingredient) {
       })
     }
     recipeButtonDiv.append(backExplore)
-    // backExplore.addEventListener("click", function () {
-    //   showResults(ingredient)
-    // })
 
     // Append the save button to the recipeButtonDiv
-    const save = document.createElement("button")
-    if (favoriteRecipes.includes(id)) {
-      save.textContent = "Recipe saved"
-      save.className = "already-saved-button"
-    } else {
-      save.textContent = "Save recipe"
-      save.className = "save-button"
-    }
-    save.id = id
+    const save = createSaveButton(favoriteRecipes, id)
     recipeButtonDiv.append(save)
     save.addEventListener("click", (e) => {
       e.target.id = id
@@ -246,10 +205,8 @@ function listIngredients(obj) {
   ingredientsDiv = document.createElement("div")
   ingredientsDiv.className = "ingredients-div"
   recipeDiv.append(ingredientsDiv)
-  
-  ingredientHeader = document.createElement("p")
-  ingredientHeader.textContent = "Ingredients"
-  ingredientHeader.className = "recipe-headers"
+
+  const ingredientHeader = createIngredientHeader()
   ingredientsDiv.append(ingredientHeader)
   
   ingredientTable = document.createElement("table")
@@ -298,10 +255,7 @@ function saveRecipe(id, searchIngredient) {
 async function exploreMore(category) {
   removeMain()
   main.removeAttribute("id")
-  let recipeCategory = document.createElement("p")
-  recipeCategory.textContent = `Here are some other ${category.toLowerCase()} recipes`
-  recipeCategory.style.width = "100%"
-  recipeCategory.style.textAlign = "center"
+  const recipeCategory = displayRecipeCategory(category)
   main.append(recipeCategory)
 
   const exploreURL = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
@@ -317,16 +271,8 @@ async function exploreMore(category) {
       main.append(listRecipeDiv)
     
     // Create html elements for each image and dish with attributes
-      let image = document.createElement("img")
-      image.alt = "recipe photo"
-      image.src = recipe.strMealThumb
-      image.width = "250"
-      image.className = "list-image"
-      image.id = recipe.idMeal
-      let dish = document.createElement("p")
-      dish.textContent = recipe.strMeal
-      dish.className = "list-name"
-      dish.id = recipe.idMeal
+      const image = createListImage(recipe)
+      const dish = createListDish(recipe)
       ingredient = recipe.strIngredient1
       listRecipeDiv.addEventListener("click", (e) => {
         renderRecipe(e.target.id, ingredient)
@@ -379,18 +325,10 @@ async function viewRecipeBox(recipes, ingredients) {
       listRecipeDiv.className = "list-recipe-div"
       main.append(listRecipeDiv)
 
-      let image = document.createElement("img")
-      image.alt = "photo of saved recipe"
-      image.src = recipe.strMealThumb
-      image.width = "250"
-      image.className = "list-image"
-      image.id = recipe.idMeal
+      const image = createListImage(recipe)
       listRecipeDiv.append(image)
 
-      let dish = document.createElement("p")
-      dish.textContent = recipe.strMeal
-      dish.className = "list-name"
-      dish.id = recipe.idMeal
+      const dish = createListDish(recipe)
       listRecipeDiv.append(dish)
       listRecipeDiv.addEventListener("click", (e) => {
         renderRecipe(e.target.id, ingredients[i])
@@ -400,10 +338,7 @@ async function viewRecipeBox(recipes, ingredients) {
     }
     
     // Indicate how many recipes are saved at the top of main
-    const savedRecipesHeader = document.createElement("p")
-    recipes.length === 1 ? savedRecipesHeader.textContent = `${recipes.length} recipe saved` : savedRecipesHeader.textContent = `${recipes.length} recipes saved`
-    savedRecipesHeader.style.width = "100%"
-    savedRecipesHeader.style.textAlign = "center"
+    const savedRecipesHeader = createSavedHeader(recipes)
     main.prepend(savedRecipesHeader)
     
     return recipeURLs

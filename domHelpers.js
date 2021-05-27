@@ -68,3 +68,39 @@ function createInstructions(recipe) {
   instructions.className = "instructions"
   return instructions
 }
+
+function createSaveButton(favoriteRecipes, id) {
+  const save = document.createElement("button")
+  if (favoriteRecipes.includes(id)) {
+    save.textContent = "Recipe saved"
+    save.className = "already-saved-button"
+  } else {
+    save.textContent = "Save recipe"
+    save.className = "save-button"
+  }
+  save.id = id
+  return save
+}
+
+function createIngredientHeader() {
+  const ingredientHeader = document.createElement("p")
+  ingredientHeader.textContent = "Ingredients"
+  ingredientHeader.className = "recipe-headers"
+  return ingredientHeader
+}
+
+function displayRecipeCategory(category) {
+  const recipeCategory = document.createElement("p")
+  recipeCategory.textContent = `Here are some other ${category.toLowerCase()} recipes`
+  recipeCategory.style.width = "100%"
+  recipeCategory.style.textAlign = "center"
+  return recipeCategory
+}
+
+function createSavedHeader(recipes) {
+  const savedRecipesHeader = document.createElement("p")
+  recipes.length === 1 ? savedRecipesHeader.textContent = `${recipes.length} recipe saved` : savedRecipesHeader.textContent = `${recipes.length} recipes saved`
+  savedRecipesHeader.style.width = "100%"
+  savedRecipesHeader.style.textAlign = "center"
+  return savedRecipesHeader
+}
