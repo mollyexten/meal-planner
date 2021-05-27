@@ -151,6 +151,7 @@ async function renderRecipe(id, ingredient) {
       e.target.id = id
       saveRecipe(e.target.id, ingredient)
     })
+
     return response
   } catch (err) {
     console.error(err)
@@ -235,10 +236,23 @@ async function viewRecipeBox(recipes, ingredients) {
 
       const dish = createListDish(recipe)
       listRecipeDiv.append(dish)
-      listRecipeDiv.addEventListener("click", (e) => {
+      image.addEventListener("click", (e) => {
+        renderRecipe(e.target.id, ingredients[i])
+      })
+      dish.addEventListener("click", (e) => {
         renderRecipe(e.target.id, ingredients[i])
       })
       
+      const remove = createRemoveButton(recipe.idMeal)
+      listRecipeDiv.append(remove)
+      remove.addEventListener("click", (e) => {
+        const index = favoriteRecipes.indexOf(e.target.id)
+        favoriteRecipes.splice(index, 1)
+        removeMain()
+        main.removeAttribute("id");
+        loadHome()
+      })
+
       recipeIDs.push(image.id)
     }
     
@@ -250,4 +264,5 @@ async function viewRecipeBox(recipes, ingredients) {
   } catch (err) {
     console.error(err)
   }
+  
 }

@@ -142,7 +142,7 @@ main {
 .list-name {
   padding: 5px;
   width: 250px;
-  margin-top: 0;
+  margin: 0px;
   text-align: center;
   cursor: pointer;
 }
@@ -221,6 +221,19 @@ main {
   padding: 20px;
   margin-top: 0px;
   line-height: 140%;
+}
+
+/* =====================================================================
+      Saved View
+  ===================================================================== */
+
+.remove-button {
+  text-align: center;
+  color: #7d7575;
+  font-size: 0.75em;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
 }
 
 /* ==========================================================================

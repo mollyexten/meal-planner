@@ -134,3 +134,11 @@ function createSavedHeader(recipes) {
   savedRecipesHeader.style.textAlign = "center"
   return savedRecipesHeader
 }
+
+function createRemoveButton(id) {
+  const remove = document.createElement("p")
+  remove.innerText = "(remove)"
+  remove.className = "remove-button"
+  remove.id = id
+  return remove
+}
