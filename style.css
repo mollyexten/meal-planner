@@ -17,8 +17,8 @@
 
 body {
   font-family: 'Nunito', sans-serif;
-  color: #252422;
-  background-color: #fffcf2;
+  color: var(--charcoal);
+  background-color: var(--off-white);
   margin: 0;
   display: flex;
   flex-flow: column wrap;
@@ -37,15 +37,15 @@ button {
 nav {
   padding-top: 5px;
   padding-right: 5px;
-  background-color: #eb5e28;
+  background-color: var(--warm-red);
   display: flex;
   justify-content: flex-end;
-  border:  #eb5e28 1px solid;
+  border:  var(--warm-red) 1px solid;
 }
 
 .nav-icon {
   padding: 5px;
-  color: #252422;
+  color: var(--charcoal);
   cursor: pointer;
 }
 
@@ -54,12 +54,12 @@ nav {
 ========================================================================== */
 
 header {
-  background-color: #eb5e28;
+  background-color: var(--warm-red);
   margin-top: 0;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  border:  #eb5e28 1px solid;
+  border:  var(--warm-red) 1px solid;
 }
 
 .header-h1 {
@@ -96,7 +96,7 @@ header {
 }
 
 .search-button {
-  background-color: #eb5e28;
+  background-color: var(--warm-red);
   border: none;
   margin-left: 5px;
   padding-top: 5px;
@@ -104,7 +104,7 @@ header {
 
 /* This reference helped me figure out how to change the color of the icon: https://stackoverflow.com/questions/12272372/how-to-style-icon-color-size-and-shadow-of-font-awesome-icons */
 .fa-search {
-  color: #252422;
+  color: var(--charcoal);
 }
 
 /* ==========================================================================
@@ -175,17 +175,17 @@ main {
   font-weight: 100;
   font-size: 16px;
   margin-top: 10px;
-  border: 1px solid #eb5e28;
+  border: 1px solid var(--warm-red);
 }
 
 #back-explore-button, .save-button {
-  background-color: #fffcf2;
-  color: #403d39;
+  background-color: var(--off-white);
+  color: var(--charcoal);
 }
 
 .already-saved-button {
-  background-color:  #eb5e28;
-  color: #fffcf2;
+  background-color:  var(--warm-red);
+  color: var(--off-white);
 }
 
 /* =====================================================================
