@@ -92,10 +92,11 @@ async function showResults(ingredient) {
 
     // Report the number of results found
     if (recipes.length > 0) {
-      recipeCount = document.createElement("p")
-      recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found for "${ingredient}"` : recipeCount.textContent = `${recipes.length} recipe found for "${ingredient}"`
-      recipeCount.style.width = "100%"
-      recipeCount.style.textAlign = "center"
+      const recipeCount = countRecipes(recipes, ingredient)
+      // recipeCount = document.createElement("p")
+      // recipes.length > 1 ? recipeCount.textContent = `${recipes.length} recipes found for "${ingredient}"` : recipeCount.textContent = `${recipes.length} recipe found for "${ingredient}"`
+      // recipeCount.style.width = "100%"
+      // recipeCount.style.textAlign = "center"
       main.append(recipeCount)
     }
 
