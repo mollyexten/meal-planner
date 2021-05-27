@@ -6,3 +6,9 @@ function createMainImage(recipe) {
   mainImage.className = "background-image"
   return mainImage
 }
+
+function showNoRecipes(ingredient) {
+  let noRecipes = document.createElement("p")
+  noRecipes.textContent = `No recipes found for "${ingredient}"`
+  return noRecipes
+}
