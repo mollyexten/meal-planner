@@ -153,19 +153,21 @@ async function renderRecipe(id, ingredient) {
     main.id = "recipe-view"
 
     // Create recipe name element and append to main
-    let name = document.createElement("p")
-    name.textContent = recipe.strMeal
-    name.className = "recipe-headers"
-    name.id = "recipe-name"
+    const name = createRecipeHeader(recipe)
+    // let name = document.createElement("p")
+    // name.textContent = recipe.strMeal
+    // name.className = "recipe-headers"
+    // name.id = "recipe-name"
     main.append(name)
 
     // Create a div to store image and ingredients
     const recipeDiv = document.createElement("div")
     recipeDiv.className = "recipe-div"
-    let image = document.createElement("img")
-    image.alt = "photo of recipe"
-    image.src = recipe.strMealThumb
-    image.className = "recipe-image"
+    const image = createRecipeImage(recipe)
+    // let image = document.createElement("img")
+    // image.alt = "photo of recipe"
+    // image.src = recipe.strMealThumb
+    // image.className = "recipe-image"
     main.append(recipeDiv)
     recipeDiv.append(image)
 

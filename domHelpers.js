@@ -38,3 +38,19 @@ function createListDish(recipe) {
   dish.id = recipe.idMeal
   return dish
 }
+
+function createRecipeHeader(recipe) {
+  const name = document.createElement("p")
+  name.textContent = recipe.strMeal
+  name.className = "recipe-headers"
+  name.id = "recipe-name"
+  return name
+}
+
+function createRecipeImage(recipe) {
+  const image = document.createElement("img")
+  image.alt = "photo of recipe"
+  image.src = recipe.strMealThumb
+  image.className = "recipe-image"
+  return image
+}
