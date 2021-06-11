@@ -15,14 +15,14 @@ function listIngredients(obj) {
   let ingredients = []
   
   // Push into measurements and ingredients with a for...in loop
-  for (let key in obj) {
-    if (key.includes("strMeasure") && (obj[key] != " " || obj[key] != "")) {
-      measurements.push(obj[key])
+  for (let measurement in obj) {
+    if (measurement.includes("strMeasure") && (obj[measurement] != " " || obj[measurement] != "")) {
+      measurements.push(obj[measurement])
     }
   }
-  for (let key in obj) {
-    if (key.includes("strIngredient") && (obj[key] != "" || obj[key] != " ")) {
-      ingredients.push(obj[key])
+  for (let ingredient in obj) {
+    if (ingredient.includes("strIngredient") && (obj[ingredient] != "" || obj[ingredient] != " ")) {
+      ingredients.push(obj[ingredient])
     }
   }
   // Fill in the table with measurement and ingredient arrays
@@ -36,7 +36,7 @@ function listIngredients(obj) {
 }
 
 // ================================= EXPLORE HELPER ================================
-function shuffle(recipes) {
+function shuffle(recipes) { 
   let shuffledRecipes = recipes
   let currentIndex = recipes.length
   let temporaryValue
