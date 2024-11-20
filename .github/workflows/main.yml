@@ -1,0 +1,27 @@
+on: [push]
+
+name: mabl
+
+jobs:
+  test:
+    name: Mabl Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+
+      - uses: mablhq/setup-mabl-cli@v1
+        with:
+          workspace-id: V2pvHBJ-rprn1n3S4ELs3A-w
+        env:
+          MABL_API_KEY: ${{ secrets.MABL_API_KEY }}
+
+      - name: Download screenshots for test
+        run: mabl test-runs export ar5vXBJ-rpan1nSs445s3A-jr -f screenshots.zip
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: screenshots.zip
