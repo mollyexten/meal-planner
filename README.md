@@ -1,6 +1,6 @@
 # Project Overview
 
-## Meal Planner 
+## Meal Planner
 
 [Meal Planner](https://mollyexten.github.io/meal-planner/)
 
